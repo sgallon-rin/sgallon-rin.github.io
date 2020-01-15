@@ -1,4 +1,4 @@
 # sgallon-rin.github.io
-## sgallon-rin's Github page
+## source code for sgallon-rin's Github page
 
-if you' like to create your Github page, you can refer to the [official guide](https://guides.github.com/features/pages/).
+if you'd like to set up your own Github page, check the [official guide](https://guides.github.com/features/pages/).
