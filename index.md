@@ -1,4 +1,4 @@
-## Visit [my blog OvO](http://sgallon.xyz)
+## Visit [my blog OvO](http://sgallon.xyz)（In Chinese）
 
 ## Welcome to GitHub Pages
 
