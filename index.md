@@ -1,3 +1,5 @@
+## Visit [my blog OvO](http://sgallon.xyz)
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/sgallon-rin/sgallon-rin.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
