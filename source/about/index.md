@@ -13,11 +13,11 @@ type: about
 
 - 2021.09 - Present &emsp; M.Eng. in Information and Communications Engineering (Expected)
   - Dept. of Information and Communications Engineering, School of Engineering, Tokyo Institute of Technology
-  - Supervisor: [Manabu Okumura](http://www.lr.pi.titech.ac.jp/~oku/index-e.html)
+  - Supervisor: Prof. [Manabu Okumura](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) ([Okumura-Funakoshi lab](https://lr-www.pi.titech.ac.jp/wp/))
 
 - 2016.09 - 2021.06 &emsp; B.Sc. in Data Science and Big Data technology
   - School of Data Science, Fudan University
-  - Supervisor: [Deqing Yang](http://kw.fudan.edu.cn/people/yangdeqing/)
+  - Supervisor: Prof. [Deqing Yang](http://kw.fudan.edu.cn/people/yangdeqing/)
 
 # Working Experience
 
