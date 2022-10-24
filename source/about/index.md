@@ -15,7 +15,7 @@ type: about
   - Dept. of Information and Communications Engineering, School of Engineering, Tokyo Institute of Technology
   - Supervisor: Prof. [Manabu Okumura](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) ([Okumura-Funakoshi lab](https://lr-www.pi.titech.ac.jp/wp/))
 
-- 2016.09 - 2021.06 &emsp; B.Sc. in Data Science and Big Data technology
+- 2016.09 - 2021.06 &emsp; B.Sc. in Data Science and Big Data Technology
   - School of Data Science, Fudan University
   - Supervisor: Prof. [Deqing Yang](http://kw.fudan.edu.cn/people/yangdeqing/)
 
