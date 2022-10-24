@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sgallon-rin.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="从零开始在CentOS7服务器上搭建GPU深度学习环境，并部署bert向量化服务0 前言这篇文档将以centos7服务器为例，介绍搭建GPU深度学习环境，并部署bert向量化服务bert-as-service的步骤，以及搭建过程中遇到的一些问题和解决方法，给后续在其他机器上的部署提供参考。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始在CentOS7服务器上搭建GPU深度学习环境，并部署bert向量化服务">
+<meta property="og:url" content="https://sgallon-rin.github.io/2021/01/04/build-gpu-deep-learning-environment-and-deploy-bert-service-on-centos7/">
+<meta property="og:site_name" content="Jialun Shen">
+<meta property="og:description" content="从零开始在CentOS7服务器上搭建GPU深度学习环境，并部署bert向量化服务0 前言这篇文档将以centos7服务器为例，介绍搭建GPU深度学习环境，并部署bert向量化服务bert-as-service的步骤，以及搭建过程中遇到的一些问题和解决方法，给后续在其他机器上的部署提供参考。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-03T15:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-24T18:00:56.801Z">
+<meta property="article:author" content="Jialun Shen">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="中文">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="gpu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sgallon-rin.github.io/2021/01/04/build-gpu-deep-learning-environment-and-deploy-bert-service-on-centos7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>从零开始在CentOS7服务器上搭建GPU深度学习环境，并部署bert向量化服务 | Jialun Shen</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Jialun Shen" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jialun Shen</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-blog">
+
+    <a href="/blog/" rel="section"><i class="fa fa-regular fa-blog fa-fw"></i>Blog</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/sgallon-rin" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sgallon-rin.github.io/2021/01/04/build-gpu-deep-learning-environment-and-deploy-bert-service-on-centos7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Jialun Shen">
+      <meta itemprop="description" content="M2, TITech">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jialun Shen">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从零开始在CentOS7服务器上搭建GPU深度学习环境，并部署bert向量化服务
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-04 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-04T00:00:00+09:00">2021-01-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-25 03:00:56" itemprop="dateModified" datetime="2022-10-25T03:00:56+09:00">2022-10-25</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>10k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>9 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="从零开始在CentOS7服务器上搭建GPU深度学习环境，并部署bert向量化服务"><a href="#从零开始在CentOS7服务器上搭建GPU深度学习环境，并部署bert向量化服务" class="headerlink" title="从零开始在CentOS7服务器上搭建GPU深度学习环境，并部署bert向量化服务"></a>从零开始在CentOS7服务器上搭建GPU深度学习环境，并部署bert向量化服务</h1><h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h2><p>这篇文档将以centos7服务器为例，介绍搭建GPU深度学习环境，并部署bert向量化服务<a target="_blank" rel="noopener" href="https://github.com/hanxiao/bert-as-service">bert-as-service</a>的步骤，以及搭建过程中遇到的一些问题和解决方法，给后续在其他机器上的部署提供参考。</p>
+<span id="more"></span>
+<p>最近公司的研究项目有对文本进行BERT向量化的需求，在github上找到了<a target="_blank" rel="noopener" href="https://github.com/hanxiao/bert-as-service">bert-as-service</a>这个开源项目，它提供pip安装，可以将bert向量化作为服务部署在服务器上，在客户端python脚本中通过简单的调用请求就可以得到词向量。相比自己调用bert源码，这种方法方便非常多。可以参考这篇知乎文章：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/50582974">两行代码玩转Google BERT句向量词向量</a></p>
+<p>搭建完成后，生产力有了质的飞跃：在本地的cpu机器上，处理一段中文短文本大约需要1s，而单卡gpu服务器上只需要30多秒就可以处理1000段短文本。</p>
+<p>注意：</p>
+<ul>
+<li>一定要先切换到一个临时目录，因为bert-service会产生很多临时文件在当前文件夹下</li>
+<li>需要开放5555、5556端口（默认）</li>
+</ul>
+<h2 id="1-GPU环境搭建"><a href="#1-GPU环境搭建" class="headerlink" title="1 GPU环境搭建"></a>1 GPU环境搭建</h2><h3 id="1-1-准备工作"><a href="#1-1-准备工作" class="headerlink" title="1.1 准备工作"></a>1.1 准备工作</h3><p>查看系统位数<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ uname -a</span><br><span class="line">Linux node14 3.10.0-1127.el7.x86_64 #1 SMP Tue Mar 31 23:36:51 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure><br>可以看到，服务器是x86_64架构，接下来的包都可以安装。</p>
+<p>查看linux发行版本（以centOS为例）<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/centos-release</span><br><span class="line">CentOS Linux release 7.8.2003 (Core)</span><br></pre></td></tr></table></figure><br>实际上，服务器深度学习环境更多使用的是Ubuntu。本文从实际情况出发，介绍在CentOS 7.x上的部署。</p>
+<p>查看显卡信息<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ lspci  | grep -i vga</span><br><span class="line">01:00.0 VGA compatible controller: NVIDIA Corporation TU102 [GeForce RTX 2080 Ti Rev. A] (rev a1)</span><br></pre></td></tr></table></figure><br><strong><em>注意</em></strong>，以下的环境搭建基于NVIDIA显卡。其他品牌的显卡虽然有其他框架可以使用，但还不成熟。</p>
+<p>可以看到，214服务器的显卡为2080Ti，是不错的显卡<del>不拿来做深度学习可惜了</del>，但是服务器通常只是在跑一些内存任务，显卡没有得到充分利用。</p>
+<h3 id="1-2-安装Anaconda-miniconda"><a href="#1-2-安装Anaconda-miniconda" class="headerlink" title="1.2 安装Anaconda/miniconda"></a>1.2 安装Anaconda/miniconda</h3><p>安装Anaconda/miniconda用于管理环境。这一步通常不会有什么问题。考虑到服务器上不需要装那么多乱七八糟的包，安装了miniconda3。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.conda.io/en/latest/miniconda.html">miniconda下载</a></li>
+<li><a target="_blank" rel="noopener" href="https://conda.io/projects/conda/en/latest/user-guide/install/linux.html">miniconda安装文档-linux</a></li>
+</ul>
+<p><em>安装conda的一个好处是，在activate/deactivate某个虚拟环境的时候，可以执行特定的脚本，这将有助于我们在不同环境中使用不同CUDA版本，而不需要每次都手动修改环境变量，这将在下文详细介绍。参考：<a target="_blank" rel="noopener" href="https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77">Multiple Version of CUDA Libraries On The Same Machine</a></em></p>
+<h3 id="1-3-安装CUDA和cuDNN"><a href="#1-3-安装CUDA和cuDNN" class="headerlink" title="1.3 安装CUDA和cuDNN"></a>1.3 安装CUDA和cuDNN</h3><p>务必<strong>不要直接安装最新版CUDA工具包</strong>，这是个巨坑。tensorflow和pytorch的不同版本都对应不同的CUDA版本，假如CUDA版本不匹配，可能会出现无法正常使用GPU进行计算的情况。（这就是我最初部署bert-service时，显示worker是GPU，但实际仍然在CPU上进行计算的原因。服务可以正常跑起来，处理请求的时候CPU直接拉满。）</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">各版本CUDA下载</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">cuDNN下载</a>，注意和CUDA版本的对应（cuDNN安装较新的版本可以覆盖旧的版本，没有报错），下载需要注册NVIDIA developer。</li>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/archive/11.0/cuda-installation-guide-linux/index.html">CUDA 11.0安装文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/archive/10.0/cuda-installation-guide-linux/index.html">CUDA 10.0安装文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#troubleshoot">cuDNN 8.0.5安装文档</a></li>
+</ul>
+<p>请务必参照tensorflow、pytorch官方文档，选择合适的CUDA版本进行安装。</p>
+<ul>
+<li>tensorflow-gpu版本和CUDA版本的对应：<a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/source#common_installation_problems">官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://pytorch.org">pytorch官网</a>，注意不同CUDA版本对应的安装命令有所不同！选择合适的版本，会有对应的conda/pip安装命令</li>
+</ul>
+<p>CUDA可以同时安装多个版本，使用时根据需要配置环境变量，例如214服务器上就安装了10.0和11.0两个版本。安装多版本CUDA<strong>建议使用runfile安装</strong>，安装选项选择不安装Driver（因为系统里已经有Driver，即显卡驱动了）。使用rpm安装可能因为已安装相同的包而产生冲突。</p>
+<p>以最终部署在214服务器上的版本为例，tensorflow-gpu 1.14.0版本对应CUDA 10.0。cuDNN的版本只需要7.4以上即可。最终我安装的是CUDA 11.0对应的cuDNN 8版本，运行没有问题。</p>
+<p>CUDA的默认安装路径为<code>/usr/local/cuda-xx.x/</code>，其中<code>xx.x</code>为版本号。<strong>注意</strong>CUDA安装完成后必须手动配置环境变量，切换CUDA版本也只需要更改环境变量，比如<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ export PATH=/usr/local/cuda-11.0/bin$&#123;PATH:+:$&#123;PATH&#125;&#125;</span><br><span class="line">$ export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64\</span><br><span class="line">    $&#123;LD_LIBRARY_PATH:+:$&#123;LD_LIBRARY_PATH&#125;&#125;</span><br></pre></td></tr></table></figure><br>和<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ export PATH=/usr/local/cuda-10.0/bin$&#123;PATH:+:$&#123;PATH&#125;&#125;</span><br><span class="line">$ export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64\</span><br><span class="line">    $&#123;LD_LIBRARY_PATH:+:$&#123;LD_LIBRARY_PATH&#125;&#125;</span><br></pre></td></tr></table></figure><br>就实现了CUDA 11.0和10.0版本的切换。</p>
+<p>要查看当前的runtime CUDA版本可以通过<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ nvcc -V</span><br><span class="line">nvcc: NVIDIA (R) Cuda compiler driver</span><br><span class="line">Copyright (c) 2005-2020 NVIDIA Corporation</span><br><span class="line">Built on Thu_Jun_11_22:26:38_PDT_2020</span><br><span class="line">Cuda compilation tools, release 11.0, V11.0.194</span><br><span class="line">Build cuda_11.0_bu.TC445_37.28540450_0</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-【非常重要】确保tensorflow可以正常使用GPU"><a href="#2-【非常重要】确保tensorflow可以正常使用GPU" class="headerlink" title="2 【非常重要】确保tensorflow可以正常使用GPU"></a>2 【非常重要】确保tensorflow可以正常使用GPU</h2><p>在python中测试tensorflow、pytorch是否可以使用GPU：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import tensorflow as tf</span><br><span class="line">&gt;&gt;&gt; tf.test.is_gpu_available()</span><br><span class="line">&gt;&gt;&gt; import torch</span><br><span class="line">&gt;&gt;&gt; torch.cuda.is_available()</span><br></pre></td></tr></table></figure></p>
+<p>这里以tensorflow为例。</p>
+<p>假如不能正常使用GPU，<code>tf.test.is_gpu_available()</code>会显示报错信息，比如，在CUDA 10.0环境下，tensorflow1.14.0<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import tensorflow as tf</span><br><span class="line">&gt;&gt;&gt; tf.test.is_gpu_available()</span><br><span class="line">......</span><br><span class="line">2020-12-01 10:26:58.163460: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Could not dlopen library &#x27;libcudnn.so.7&#x27;; dlerror: libcudnn.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.0/lib64:/usr/local/cuda-10.0/extras/CUPTI/lib64:/usr/local/cuda-11.0/lib64</span><br><span class="line">2020-12-01 10:26:58.163474: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1663] Cannot dlopen some GPU libraries. Skipping registering GPU devices...</span><br><span class="line">2020-12-01 10:26:58.163490: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1181] Device interconnect StreamExecutor with strength 1 edge matrix:</span><br><span class="line">2020-12-01 10:26:58.163498: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1187]      0 </span><br><span class="line">2020-12-01 10:26:58.163510: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1200] 0:   N </span><br><span class="line">False</span><br></pre></td></tr></table></figure><br>因为找不到<code>libcudnn.so.7</code>文件，所以GPU不可用。通过创建一个软链接，可以解决这个问题。首先，找到libcudnn的安装位置，以rpm安装的cudnn为例（网上有通过tgz安装的解决方法，然而我在官网只看到了rpm安装包）<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ rpm -ql libcudnn8</span><br><span class="line">/usr/lib64/libcudnn.so.8</span><br><span class="line">/usr/lib64/libcudnn.so.8.0.5</span><br><span class="line">/usr/lib64/libcudnn_adv_infer.so.8</span><br><span class="line">/usr/lib64/libcudnn_adv_infer.so.8.0.5</span><br><span class="line">/usr/lib64/libcudnn_adv_train.so.8</span><br><span class="line">/usr/lib64/libcudnn_adv_train.so.8.0.5</span><br><span class="line">/usr/lib64/libcudnn_cnn_infer.so.8</span><br><span class="line">/usr/lib64/libcudnn_cnn_infer.so.8.0.5</span><br><span class="line">/usr/lib64/libcudnn_cnn_train.so.8</span><br><span class="line">/usr/lib64/libcudnn_cnn_train.so.8.0.5</span><br><span class="line">/usr/lib64/libcudnn_ops_infer.so.8</span><br><span class="line">/usr/lib64/libcudnn_ops_infer.so.8.0.5</span><br><span class="line">/usr/lib64/libcudnn_ops_train.so.8</span><br><span class="line">/usr/lib64/libcudnn_ops_train.so.8.0.5</span><br></pre></td></tr></table></figure></p>
+<p>然后，创建软链接<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /usr/lib64/libcudnn.so /usr/local/cuda-10.0/lib64/libcudnn.so.7</span><br></pre></td></tr></table></figure><br>再次测试，返回结果为True。</p>
+<p>又比如，在CUDA 11.0环境下，tensorflow-gpu 2.3.1，import提示<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import tensorflow as tf</span><br><span class="line">2020-12-01 16:35:49.357365: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library &#x27;libcudart.so.10.1&#x27;; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.0/lib64</span><br><span class="line">2020-12-01 16:35:49.357395: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.</span><br></pre></td></tr></table></figure><br>创建软链接<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /usr/local/cuda-11.0/lib64/libcudart.so /usr/local/cuda-11.0/lib64/libcudart.so.10.1</span><br></pre></td></tr></table></figure><br>再次尝试<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import tensorflow as tf</span><br><span class="line">2020-12-01 16:40:30.623510: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1</span><br><span class="line">&gt;&gt;&gt; tf.test.is_gpu_available()</span><br><span class="line">......</span><br><span class="line">2020-12-01 16:41:20.527629: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library &#x27;libcusparse.so.10&#x27;; dlerror: libcusparse.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.0/lib64</span><br><span class="line">2020-12-01 16:41:20.527687: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library &#x27;libcudnn.so.7&#x27;; dlerror: libcudnn.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.0/lib64</span><br><span class="line">......</span><br><span class="line">False</span><br></pre></td></tr></table></figure><br>创建软链接<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /usr/local/cuda-11.0/lib64/libcublas.so /usr/local/cuda-11.0/lib64/libcublas.so.10</span><br><span class="line">$ ln -s /usr/lib64/libcudnn.so /usr/local/cuda-11.0/lib64/libcudnn.so.7</span><br><span class="line">$ ln -s /usr/local/cuda-11.0/lib64/libcusparse.so /usr/local/cuda-11.0/lib64/libcusparse.so.10</span><br></pre></td></tr></table></figure><br>再次测试<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import tensorflow as tf</span><br><span class="line">2020-12-01 16:40:30.623510: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1</span><br><span class="line">&gt;&gt;&gt; tf.test.is_gpu_available()</span><br><span class="line">......</span><br><span class="line">True</span><br></pre></td></tr></table></figure><br><strong>总而言之，缺什么<code>libxxxx</code>只需要在缺少文件的路径下创建一个软链接到（更高版本的）同名文件。</strong></p>
+<p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40298200/article/details/79420758">【UBUNTU深度学习环境】ImportError: libcudnn.so.7: cannot open shared object file: No such file or directory</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27481295/article/details/102799977">【pytorch】libcudart.so.10.1: cannot open shared object file: No such file or directory</a></li>
+</ul>
+<h2 id="3-bert-as-service的部署与使用"><a href="#3-bert-as-service的部署与使用" class="headerlink" title="3 bert-as-service的部署与使用"></a>3 bert-as-service的部署与使用</h2><h3 id="3-1-conda创建虚拟环境"><a href="#3-1-conda创建虚拟环境" class="headerlink" title="3.1 conda创建虚拟环境"></a>3.1 conda创建虚拟环境</h3><h4 id="3-1-1-创建python-3-6虚拟环境"><a href="#3-1-1-创建python-3-6虚拟环境" class="headerlink" title="3.1.1 创建python 3.6虚拟环境"></a>3.1.1 创建python 3.6虚拟环境</h4><p>（python 3.7中tensorflow 1.14.0或之前版本import会报错），激活环境。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ conda create -n bertservice -python=3.6</span><br><span class="line">$ conda activate bertservice</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-1-2-【可选】设定pip国内镜像"><a href="#3-1-2-【可选】设定pip国内镜像" class="headerlink" title="3.1.2 【可选】设定pip国内镜像"></a>3.1.2 【可选】设定pip国内镜像</h4><p>比如豆瓣。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip config set global.index-url https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-1-3-安装tensorflow-gpu-1-x"><a href="#3-1-3-安装tensorflow-gpu-1-x" class="headerlink" title="3.1.3 安装tensorflow-gpu 1.x"></a>3.1.3 安装tensorflow-gpu 1.x</h4><p>（因为2.x版本无法正常启动bert-service）。<strong><em>注意</em></strong>，tensorflow一定一定要安装<strong>gpu版本</strong>，假如已经装了cpu版本，请卸载之，否则就算装了gpu版，import的还是cpu版。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install tensorflow-gpu==1.14.0</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-1-4-服务端只需要安装bert-serving-server包。"><a href="#3-1-4-服务端只需要安装bert-serving-server包。" class="headerlink" title="3.1.4 服务端只需要安装bert-serving-server包。"></a>3.1.4 服务端只需要安装bert-serving-server包。</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install bert-serving-server</span><br></pre></td></tr></table></figure>
+<h4 id="3-1-5-配置activate-deactivate虚拟环境时自动修改环境变量的脚本"><a href="#3-1-5-配置activate-deactivate虚拟环境时自动修改环境变量的脚本" class="headerlink" title="3.1.5 配置activate/deactivate虚拟环境时自动修改环境变量的脚本"></a>3.1.5 配置activate/deactivate虚拟环境时自动修改环境变量的脚本</h4><p>这样，CUDA版本切换后无需手动配置环境变量。</p>
+<p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77">Multiple Version of CUDA Libraries On The Same Machine</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/hizengbiao/article/details/88625044">非root用户在linux下安装多个版本的CUDA和cuDNN（cuda 8、cuda 10.1 等）</a></li>
+</ul>
+<p>操作步骤：</p>
+<ol>
+<li><p>cd到conda创建的环境目录下。例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/miniconda3/envs/bertservice</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建目录和脚本文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ./etc/conda/activate.d</span><br><span class="line">$ mkdir ./etc/conda/deactivate.d</span><br><span class="line">$ touch ./etc/conda/activate.d/activate.sh</span><br><span class="line">$ touch ./etc/conda/deactivate.d/deactivate.sh</span><br></pre></td></tr></table></figure>
+<p>脚本文件内容如下：</p>
+</li>
+</ol>
+<p><code>activate.sh</code><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">export PATH=/usr/local/cuda-10.0/bin$&#123;PATH:+:$&#123;PATH&#125;&#125;</span><br><span class="line">ORIGINAL_LD_LIBRARY_PATH=$LD_LIBRARY_PATH</span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64:/usr/local/cuda-10.0/extras/CUPTI/lib64</span><br></pre></td></tr></table></figure><br><code>deactivate.sh</code><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">export PATH=/usr/local/cuda-11.0/bin$&#123;PATH:+:$&#123;PATH&#125;&#125;</span><br><span class="line">export LD_LIBRARY_PATH=$ORIGINAL_LD_LIBRARY_PATH</span><br><span class="line">unset ORIGINAL_LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure><br>这里，11.0是<code>base</code>环境的CUDA版本，10.0是<code>bertservice</code>环境的CUDA版本。</p>
+<h3 id="3-2-服务端启动服务"><a href="#3-2-服务端启动服务" class="headerlink" title="3.2 服务端启动服务"></a>3.2 服务端启动服务</h3><p>启动服务，需要指定模型路径，提前下载bert参数文件，我们需要用到的是中文的<a target="_blank" rel="noopener" href="https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip">BERT-Base, Chinese</a>。关于api的详细说明请参考<a target="_blank" rel="noopener" href="https://github.com/hanxiao/bert-as-service">bert-service的github官方文档</a>。</p>
+<p>启动命令例：模型路径、worker数量、向客户端返回token（实际情况下不需要，因为中文bert是字级别的）、不限制句子长度（最大长度是512，超过的部分将会被截断）<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bert-serving-start -model_dir ~/models/chinese_L-12_H-768_A-12/ -num_worker=1 -show_tokens_to_client -max_seq_len=None</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-3-客户端调用"><a href="#3-3-客户端调用" class="headerlink" title="3.3 客户端调用"></a>3.3 客户端调用</h3><p>客户端只需要安装bert-serving-client包<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install bert-serving-client</span><br></pre></td></tr></table></figure><br>然后在客户端python脚本中调用<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from bert_serving.client import BertClient</span><br><span class="line">&gt;&gt;&gt; bc = BertClient(ip=&#x27;localhost&#x27;) #服务器ip</span><br><span class="line">&gt;&gt;&gt; out = bc.encode([&quot;其实从２０１１下半年开始，中国风就在表坛成为当仁不让的话题。&quot;],show_tokens=False, is_tokenized=False)</span><br></pre></td></tr></table></figure><br><strong><em>注意</em></strong>，<code>bc.encode()</code>接收的参数类型是list。详细api请同样参考<a target="_blank" rel="noopener" href="https://github.com/hanxiao/bert-as-service">文档</a>。</p>
+<h2 id="4-遇到的其他问题"><a href="#4-遇到的其他问题" class="headerlink" title="4 遇到的其他问题"></a>4 遇到的其他问题</h2><p>以下的问题，按照上述安装方法，应该不会遇到。</p>
+<h3 id="4-1-卸载CUDA的时候不小心把显卡驱动（NVIDIA-Driver）一并卸载了"><a href="#4-1-卸载CUDA的时候不小心把显卡驱动（NVIDIA-Driver）一并卸载了" class="headerlink" title="4.1 卸载CUDA的时候不小心把显卡驱动（NVIDIA Driver）一并卸载了"></a>4.1 卸载CUDA的时候不小心把显卡驱动（NVIDIA Driver）一并卸载了</h3><p>重装显卡驱动：上<a target="_blank" rel="noopener" href="https://www.nvidia.cn/Download/index.aspx">官网</a>找到显卡对应的驱动，下载，重装。安装完成后，可以正常执行<code>nvidia-smi</code>命令，查看显卡情况，不需要reboot。<del>服务器还在执行别的任务，不能重启，差点以为把服务器玩坏了。</del><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ nvidia-smi</span><br><span class="line">Tue Dec  1 15:05:55 2020       </span><br><span class="line">+-----------------------------------------------------------------------------+</span><br><span class="line">| NVIDIA-SMI 450.80.02    Driver Version: 450.80.02    CUDA Version: 11.0     |</span><br><span class="line">|-------------------------------+----------------------+----------------------+</span><br><span class="line">| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |</span><br><span class="line">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span><br><span class="line">|                               |                      |               MIG M. |</span><br><span class="line">|===============================+======================+======================|</span><br><span class="line">|   0  GeForce RTX 208...  Off  | 00000000:01:00.0 Off |                  N/A |</span><br><span class="line">| 12%   58C    P0    41W / 250W |      0MiB / 11011MiB |      0%      Default |</span><br><span class="line">|                               |                      |                  N/A |</span><br><span class="line">+-------------------------------+----------------------+----------------------+</span><br><span class="line">                                                                               </span><br><span class="line">+-----------------------------------------------------------------------------+</span><br><span class="line">| Processes:                                                                  |</span><br><span class="line">|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |</span><br><span class="line">|        ID   ID                                                   Usage      |</span><br><span class="line">|=============================================================================|</span><br><span class="line">|  No running processes found                                                 |</span><br><span class="line">+-----------------------------------------------------------------------------+</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-2-nvidia-smi与nvcc-V显示的CUDA版本不一致"><a href="#4-2-nvidia-smi与nvcc-V显示的CUDA版本不一致" class="headerlink" title="4.2 nvidia-smi与nvcc -V显示的CUDA版本不一致"></a>4.2 nvidia-smi与nvcc -V显示的CUDA版本不一致</h3><p>没毛病，<code>nvidia-smi</code>是Driver版本，<code>nvcc -V</code>是runtime版本。参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ljp1919/article/details/102640512">nvidia-smi 和 nvcc 结果的版本为何不一致</a></p>
+<h3 id="4-3-尝试使用docker中的tensorflow-gpu镜像"><a href="#4-3-尝试使用docker中的tensorflow-gpu镜像" class="headerlink" title="4.3 尝试使用docker中的tensorflow-gpu镜像"></a>4.3 尝试使用docker中的tensorflow-gpu镜像</h3><p>按照官方文档操作，docker并没有运行成功。最后放弃了该方法。</p>
+<p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/docker">https://www.tensorflow.org/install/docker</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#setting-up-docker-on-rhel-7">https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#setting-up-docker-on-rhel-7</a></li>
+</ul>
+<hr>
+<p>This is an archived post. Originally posted on <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43538536/article/details/112193553">CSDN</a>.</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Jialun Shen
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://sgallon-rin.github.io/2021/01/04/build-gpu-deep-learning-environment-and-deploy-bert-service-on-centos7/" title="从零开始在CentOS7服务器上搭建GPU深度学习环境，并部署bert向量化服务">https://sgallon-rin.github.io/2021/01/04/build-gpu-deep-learning-environment-and-deploy-bert-service-on-centos7/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/%E4%B8%AD%E6%96%87/" rel="tag"># 中文</a>
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/gpu/" rel="tag"># gpu</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/25/httpd-service-start-failed/" rel="prev" title="httpd重启失败No space left on device: AH00023: Couldn't create the ssl-cache mutex">
+      <i class="fa fa-chevron-left"></i> httpd重启失败No space left on device: AH00023: Couldn't create the ssl-cache mutex
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/25/create-personal-website-with-hexo-and-github-pages/" rel="next" title="Create Personal Website with Hexo and Github Pages">
+      Create Personal Website with Hexo and Github Pages <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%9C%A8CentOS7%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BAGPU%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%EF%BC%8C%E5%B9%B6%E9%83%A8%E7%BD%B2bert%E5%90%91%E9%87%8F%E5%8C%96%E6%9C%8D%E5%8A%A1"><span class="nav-text">从零开始在CentOS7服务器上搭建GPU深度学习环境，并部署bert向量化服务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-%E5%89%8D%E8%A8%80"><span class="nav-text">0 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-GPU%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-text">1 GPU环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-text">1.1 准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%AE%89%E8%A3%85Anaconda-miniconda"><span class="nav-text">1.2 安装Anaconda&#x2F;miniconda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E5%AE%89%E8%A3%85CUDA%E5%92%8CcuDNN"><span class="nav-text">1.3 安装CUDA和cuDNN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E3%80%90%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81%E3%80%91%E7%A1%AE%E4%BF%9Dtensorflow%E5%8F%AF%E4%BB%A5%E6%AD%A3%E5%B8%B8%E4%BD%BF%E7%94%A8GPU"><span class="nav-text">2 【非常重要】确保tensorflow可以正常使用GPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-bert-as-service%E7%9A%84%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="nav-text">3 bert-as-service的部署与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-conda%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="nav-text">3.1 conda创建虚拟环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-%E5%88%9B%E5%BB%BApython-3-6%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="nav-text">3.1.1 创建python 3.6虚拟环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-%E3%80%90%E5%8F%AF%E9%80%89%E3%80%91%E8%AE%BE%E5%AE%9Apip%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F"><span class="nav-text">3.1.2 【可选】设定pip国内镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-%E5%AE%89%E8%A3%85tensorflow-gpu-1-x"><span class="nav-text">3.1.3 安装tensorflow-gpu 1.x</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-4-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8F%AA%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85bert-serving-server%E5%8C%85%E3%80%82"><span class="nav-text">3.1.4 服务端只需要安装bert-serving-server包。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-5-%E9%85%8D%E7%BD%AEactivate-deactivate%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%97%B6%E8%87%AA%E5%8A%A8%E4%BF%AE%E6%94%B9%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E8%84%9A%E6%9C%AC"><span class="nav-text">3.1.5 配置activate&#x2F;deactivate虚拟环境时自动修改环境变量的脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="nav-text">3.2 服务端启动服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B0%83%E7%94%A8"><span class="nav-text">3.3 客户端调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%81%87%E5%88%B0%E7%9A%84%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="nav-text">4 遇到的其他问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%8D%B8%E8%BD%BDCUDA%E7%9A%84%E6%97%B6%E5%80%99%E4%B8%8D%E5%B0%8F%E5%BF%83%E6%8A%8A%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%EF%BC%88NVIDIA-Driver%EF%BC%89%E4%B8%80%E5%B9%B6%E5%8D%B8%E8%BD%BD%E4%BA%86"><span class="nav-text">4.1 卸载CUDA的时候不小心把显卡驱动（NVIDIA Driver）一并卸载了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-nvidia-smi%E4%B8%8Envcc-V%E6%98%BE%E7%A4%BA%E7%9A%84CUDA%E7%89%88%E6%9C%AC%E4%B8%8D%E4%B8%80%E8%87%B4"><span class="nav-text">4.2 nvidia-smi与nvcc -V显示的CUDA版本不一致</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8docker%E4%B8%AD%E7%9A%84tensorflow-gpu%E9%95%9C%E5%83%8F"><span class="nav-text">4.3 尝试使用docker中的tensorflow-gpu镜像</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jialun Shen"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Jialun Shen</p>
+  <div class="site-description" itemprop="description">M2, TITech</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sgallon-rin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sgallon-rin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shenjl@lr.pi.titech.ac.jp" title="Email → mailto:shenjl@lr.pi.titech.ac.jp" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/JialunShen" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;JialunShen" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-globe"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jialun Shen</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">13k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">12 mins.</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>
