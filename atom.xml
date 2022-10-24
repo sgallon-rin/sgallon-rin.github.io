@@ -20,7 +20,7 @@
     <title>This is a Test</title>
     <link href="https://sgallon-rin.github.io/2021/11/02/test-post/"/>
     <id>https://sgallon-rin.github.io/2021/11/02/test-post/</id>
-    <published>2021-11-02T08:14:09.000Z</published>
+    <published>2021-11-02T07:14:09.000Z</published>
     <updated>2021-11-02T12:34:15.804Z</updated>
     
     <content type="html"><![CDATA[<h2 id="This-is-a-test"><a href="#This-is-a-test" class="headerlink" title="This is a test!"></a>This is a test!</h2><p>test</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Test code Here</span><br></pre></td></tr></table></figure><script type="math/tex; mode=display">y = \alpha\times x + \beta</script><span id="more"></span><p>üäöß</p><p>中文中文 </p><p>あいうえお　アイウエオ</p><p>ΑΒΓαβγ</p>]]></content>
