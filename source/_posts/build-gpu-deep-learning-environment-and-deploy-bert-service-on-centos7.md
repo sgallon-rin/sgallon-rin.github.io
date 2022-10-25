@@ -10,7 +10,7 @@ language: zh-CN
 date: 2021-01-04 00:00:00
 ---
 
-# 0 前言
+## 0 前言
 这篇文档将以centos7服务器为例，介绍搭建GPU深度学习环境，并部署bert向量化服务[bert-as-service](https://github.com/hanxiao/bert-as-service)的步骤，以及搭建过程中遇到的一些问题和解决方法，给后续在其他机器上的部署提供参考。
 
 <!--more-->
@@ -23,8 +23,8 @@ date: 2021-01-04 00:00:00
 - 一定要先切换到一个临时目录，因为bert-service会产生很多临时文件在当前文件夹下
 - 需要开放5555、5556端口（默认）
 
-# 1 GPU环境搭建
-## 1.1 准备工作
+## 1 GPU环境搭建
+### 1.1 准备工作
 查看系统位数
 ```
 $ uname -a
@@ -48,7 +48,7 @@ $ lspci  | grep -i vga
 
 可以看到，214服务器的显卡为2080Ti，是不错的显卡~~不拿来做深度学习可惜了~~，但是服务器通常只是在跑一些内存任务，显卡没有得到充分利用。
 
-## 1.2 安装Anaconda/miniconda
+### 1.2 安装Anaconda/miniconda
 安装Anaconda/miniconda用于管理环境。这一步通常不会有什么问题。考虑到服务器上不需要装那么多乱七八糟的包，安装了miniconda3。
 
 * [miniconda下载](https://docs.conda.io/en/latest/miniconda.html)
@@ -56,7 +56,7 @@ $ lspci  | grep -i vga
 
 *安装conda的一个好处是，在activate/deactivate某个虚拟环境的时候，可以执行特定的脚本，这将有助于我们在不同环境中使用不同CUDA版本，而不需要每次都手动修改环境变量，这将在下文详细介绍。参考：[Multiple Version of CUDA Libraries On The Same Machine](https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77)*
 
-## 1.3 安装CUDA和cuDNN
+### 1.3 安装CUDA和cuDNN
 务必**不要直接安装最新版CUDA工具包**，这是个巨坑。tensorflow和pytorch的不同版本都对应不同的CUDA版本，假如CUDA版本不匹配，可能会出现无法正常使用GPU进行计算的情况。（这就是我最初部署bert-service时，显示worker是GPU，但实际仍然在CPU上进行计算的原因。服务可以正常跑起来，处理请求的时候CPU直接拉满。）
 
 * [各版本CUDA下载](https://developer.nvidia.com/cuda-toolkit-archive)
@@ -98,7 +98,7 @@ Cuda compilation tools, release 11.0, V11.0.194
 Build cuda_11.0_bu.TC445_37.28540450_0
 ```
 
-# 2 【非常重要】确保tensorflow可以正常使用GPU
+## 2 【非常重要】确保tensorflow可以正常使用GPU
 在python中测试tensorflow、pytorch是否可以使用GPU：
 ```
 >>> import tensorflow as tf
@@ -188,33 +188,33 @@ True
 * [【pytorch】libcudart.so.10.1: cannot open shared object file: No such file or directory](https://blog.csdn.net/qq_27481295/article/details/102799977)
 
 
-# 3 bert-as-service的部署与使用
-## 3.1 conda创建虚拟环境
-### 3.1.1 创建python 3.6虚拟环境
+## 3 bert-as-service的部署与使用
+### 3.1 conda创建虚拟环境
+#### 3.1.1 创建python 3.6虚拟环境
 （python 3.7中tensorflow 1.14.0或之前版本import会报错），激活环境。
 ```
 $ conda create -n bertservice -python=3.6
 $ conda activate bertservice
 ```
 
-### 3.1.2 【可选】设定pip国内镜像
+#### 3.1.2 【可选】设定pip国内镜像
 比如豆瓣。
 ```
 $ pip config set global.index-url https://pypi.douban.com/simple
 ```
 
-### 3.1.3 安装tensorflow-gpu 1.x
+#### 3.1.3 安装tensorflow-gpu 1.x
 （因为2.x版本无法正常启动bert-service）。***注意***，tensorflow一定一定要安装**gpu版本**，假如已经装了cpu版本，请卸载之，否则就算装了gpu版，import的还是cpu版。
 ```
 $ pip install tensorflow-gpu==1.14.0
 ```
 
-### 3.1.4 服务端只需要安装bert-serving-server包。
+#### 3.1.4 服务端只需要安装bert-serving-server包。
 ```
 $ pip install bert-serving-server
 ```
 
-### 3.1.5 配置activate/deactivate虚拟环境时自动修改环境变量的脚本
+#### 3.1.5 配置activate/deactivate虚拟环境时自动修改环境变量的脚本
 这样，CUDA版本切换后无需手动配置环境变量。
 
 参考：
@@ -253,7 +253,7 @@ unset ORIGINAL_LD_LIBRARY_PATH
 ```
 这里，11.0是`base`环境的CUDA版本，10.0是`bertservice`环境的CUDA版本。
 
-## 3.2 服务端启动服务
+### 3.2 服务端启动服务
 启动服务，需要指定模型路径，提前下载bert参数文件，我们需要用到的是中文的[BERT-Base, Chinese](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)。关于api的详细说明请参考[bert-service的github官方文档](https://github.com/hanxiao/bert-as-service)。
 
 启动命令例：模型路径、worker数量、向客户端返回token（实际情况下不需要，因为中文bert是字级别的）、不限制句子长度（最大长度是512，超过的部分将会被截断）
@@ -261,7 +261,7 @@ unset ORIGINAL_LD_LIBRARY_PATH
 $ bert-serving-start -model_dir ~/models/chinese_L-12_H-768_A-12/ -num_worker=1 -show_tokens_to_client -max_seq_len=None
 ```
 
-## 3.3 客户端调用
+### 3.3 客户端调用
 客户端只需要安装bert-serving-client包
 ```
 $ pip install bert-serving-client
@@ -274,10 +274,10 @@ $ pip install bert-serving-client
 ```
 ***注意***，`bc.encode()`接收的参数类型是list。详细api请同样参考[文档](https://github.com/hanxiao/bert-as-service)。
 
-# 4 遇到的其他问题
+## 4 遇到的其他问题
 以下的问题，按照上述安装方法，应该不会遇到。
 
-## 4.1 卸载CUDA的时候不小心把显卡驱动（NVIDIA Driver）一并卸载了
+### 4.1 卸载CUDA的时候不小心把显卡驱动（NVIDIA Driver）一并卸载了
 重装显卡驱动：上[官网](https://www.nvidia.cn/Download/index.aspx)找到显卡对应的驱动，下载，重装。安装完成后，可以正常执行`nvidia-smi`命令，查看显卡情况，不需要reboot。~~服务器还在执行别的任务，不能重启，差点以为把服务器玩坏了。~~
 ```
 $ nvidia-smi
@@ -303,10 +303,10 @@ Tue Dec  1 15:05:55 2020
 +-----------------------------------------------------------------------------+
 ```
 
-## 4.2 nvidia-smi与nvcc -V显示的CUDA版本不一致
+### 4.2 nvidia-smi与nvcc -V显示的CUDA版本不一致
 没毛病，`nvidia-smi`是Driver版本，`nvcc -V`是runtime版本。参考：[nvidia-smi 和 nvcc 结果的版本为何不一致](https://blog.csdn.net/ljp1919/article/details/102640512)
 
-## 4.3 尝试使用docker中的tensorflow-gpu镜像
+### 4.3 尝试使用docker中的tensorflow-gpu镜像
 按照官方文档操作，docker并没有运行成功。最后放弃了该方法。
 
 参考：
