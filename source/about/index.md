@@ -5,13 +5,13 @@ comments: false
 type: about
 ---
 
-# Publications
-
-
-
 # Education
 
-- 2021.09 - Present &emsp; M.Eng. in Information and Communications Engineering (Expected)
+- 2023.09 - Present &emsp; Ph.D. Student in Information and Communications Engineering
+  Dept. of Information and Communications Engineering, School of Engineering, Tokyo Institute of Technology
+  Supervisor: Prof. [Manabu Okumura](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) ([Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/))
+
+- 2021.09 - 2023.09 &emsp; M.Eng. in Information and Communications Engineering
   Dept. of Information and Communications Engineering, School of Engineering, Tokyo Institute of Technology
   Supervisor: Prof. [Manabu Okumura](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) ([Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/))
 
@@ -26,3 +26,4 @@ type: about
 
 - 2020.10 - 2021.08 &emsp; Research and Development Engineer (Internship), [Monetware Inc.](http://www.monetware.com)
 
+# Publications
