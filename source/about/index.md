@@ -27,3 +27,5 @@ type: about
 - 2020.10 - 2021.08 &emsp; Research and Development Engineer (Internship), [Monetware Inc.](http://www.monetware.com)
 
 # Publications
+
+- Emotion-guided Multi-modal Fusion for Personality Traits Recognition. 2023. [[paper](https://www.jstage.jst.go.jp/article/pjsai/JSAI2023/0/JSAI2023_2U4IS2c03/_article/-char/en)]. Yusong WANG, Dongyuan LI, __Jialun SHEN__, Kotaro FUNAKOSHI, Manabu OKUMURA.  In _Proceedings of the 37th Annual Conference of the Japanese Society for Artificial Intelligence_. (__JSAI 2023__).
