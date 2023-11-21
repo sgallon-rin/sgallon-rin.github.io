@@ -59,11 +59,11 @@
     
     <category term="linux" scheme="https://sgallon-rin.github.io/tags/linux/"/>
     
-    <category term="中文" scheme="https://sgallon-rin.github.io/tags/%E4%B8%AD%E6%96%87/"/>
-    
     <category term="python" scheme="https://sgallon-rin.github.io/tags/python/"/>
     
     <category term="gpu" scheme="https://sgallon-rin.github.io/tags/gpu/"/>
+    
+    <category term="中文" scheme="https://sgallon-rin.github.io/tags/%E4%B8%AD%E6%96%87/"/>
     
   </entry>
   
