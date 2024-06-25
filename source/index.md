@@ -5,9 +5,11 @@ comments: false
 type: about
 ---
 
-Welcome!
+Welcome! &emsp; [[简体中文](./zh-CN) | [日本語](./ja)]
+
 I am Jialun Shen (沈嘉伦), a Ph.D. student at [Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/), Tokyo Institute of Technology.
-My research interests include natural language processing and machine learning.
+
+Research interests: natural language processing, deep learning
 
 
 # Publications
@@ -39,3 +41,11 @@ My research interests include natural language processing and machine learning.
 
 - 2020.10 - 2021.08 &emsp; Research and Development Engineer (Internship), [Monetware Inc.](http://www.monetware.com)
 
+
+# Honors
+
+- 2024.04 - 2026.03 &emsp; Park Yong Koo Scholarship (Park Yong Koo Scholarship Foundation)
+
+- 2023.09 - 2026.09 &emsp; Tokyo Tech Tsubame Scholarship for Doctoral Students
+
+- 2017.12 & 2021.06 &emsp; Scholarship for Outstanding Undergraduate Students at Fudan University
