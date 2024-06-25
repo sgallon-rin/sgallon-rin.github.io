@@ -1262,7 +1262,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #dd6c0a;
+  background: #8f5e22;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1531,7 +1531,7 @@ pre .javascript .function {
   transition-timing-function: ease-in-out;
 }
 .back-to-top {
-  background: #222;
+  background: #50d0d0;
   bottom: -100px;
   box-sizing: border-box;
   color: #fff;
