@@ -4,7 +4,7 @@
   --card-bg-color: #f5f5f5;
   --text-color: #555;
   --blockquote-color: #666;
-  --link-color: #555;
+  --link-color: #384d98;
   --link-hover-color: #222;
   --brand-color: #fff;
   --brand-hover-color: #fff;
@@ -167,8 +167,8 @@ template {
   display: none;
 }
 ::selection {
-  background: #262a30;
-  color: #eee;
+  background: #50d0d0;
+  color: #be1e3e;
 }
 html,
 body {
@@ -986,7 +986,7 @@ pre .javascript .function {
   padding: 0 10px;
 }
 .headband {
-  background: #222;
+  background: #50d0d0;
   height: 3px;
 }
 .site-meta {
@@ -1135,7 +1135,7 @@ pre .javascript .function {
 .github-corner svg {
   border: 0;
   color: #fff;
-  fill: #222;
+  fill: #50d0d0;
   position: absolute;
   right: 0;
   top: 0;
@@ -1143,7 +1143,7 @@ pre .javascript .function {
 }
 @media (max-width: 991px) {
   .github-corner svg {
-    color: #222;
+    color: #50d0d0;
     fill: #fff;
   }
   .github-corner .github-corner:hover .octo-arm {
@@ -1262,7 +1262,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #0fedff;
+  background: #dd6c0a;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1386,52 +1386,6 @@ pre .javascript .function {
 }
 .sidebar-toggle:hover .toggle-line {
   background: #fc6423;
-}
-.post-toc {
-  font-size: 0.875em;
-}
-.post-toc ol {
-  list-style: none;
-  margin: 0;
-  padding: 0 2px 5px 10px;
-  text-align: left;
-}
-.post-toc ol > ol {
-  padding-left: 0;
-}
-.post-toc ol a {
-  transition-property: all;
-  transition-delay: 0s;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
-}
-.post-toc .nav-item {
-  line-height: 1.8;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.post-toc .nav .nav-child {
-  display: none;
-}
-.post-toc .nav .active > .nav-child {
-  display: block;
-}
-.post-toc .nav .active-current > .nav-child {
-  display: block;
-}
-.post-toc .nav .active-current > .nav-child > .nav-item {
-  display: block;
-}
-.post-toc .nav .active > a {
-  border-bottom-color: #fc6423;
-  color: #fc6423;
-}
-.post-toc .nav .active-current > a {
-  color: #fc6423;
-}
-.post-toc .nav .active-current > a:hover {
-  color: #fc6423;
 }
 .site-state {
   display: flex;
@@ -2334,7 +2288,7 @@ mjx-container + br {
   }
 }
 .site-brand-container {
-  background: #222;
+  background: #50d0d0;
 }
 @media (max-width: 991px) {
   .site-brand-container {

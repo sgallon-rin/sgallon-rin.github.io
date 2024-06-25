@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Jialun Shen</title>
+  <title>Sgallon&#39;s Homepage</title>
   
   
   <link href="https://sgallon-rin.github.io/atom.xml" rel="self"/>
@@ -59,11 +59,11 @@
     
     <category term="linux" scheme="https://sgallon-rin.github.io/tags/linux/"/>
     
+    <category term="中文" scheme="https://sgallon-rin.github.io/tags/%E4%B8%AD%E6%96%87/"/>
+    
     <category term="python" scheme="https://sgallon-rin.github.io/tags/python/"/>
     
     <category term="gpu" scheme="https://sgallon-rin.github.io/tags/gpu/"/>
-    
-    <category term="中文" scheme="https://sgallon-rin.github.io/tags/%E4%B8%AD%E6%96%87/"/>
     
   </entry>
   

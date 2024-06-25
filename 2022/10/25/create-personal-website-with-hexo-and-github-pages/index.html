@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<meta name="theme-color" content="#50d0d0">
 <meta name="generator" content="Hexo 6.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#50d0d0">
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Create Personal Website with Hexo and Github Pages">
 <meta property="og:url" content="https://sgallon-rin.github.io/2022/10/25/create-personal-website-with-hexo-and-github-pages/">
-<meta property="og:site_name" content="Jialun Shen">
+<meta property="og:site_name" content="Sgallon&#39;s Homepage">
 <meta property="og:description" content="In this post, I will explain the details I build my own Github homepage with Hexo, theme NexT,  and Github Pages. Basically, I followed the steps in this Zhihu answer:https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;20">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-24T15:00:00.000Z">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>Create Personal Website with Hexo and Github Pages | Jialun Shen</title>
+  <title>Create Personal Website with Hexo and Github Pages | Sgallon's Homepage</title>
   
 
 
@@ -80,7 +80,7 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Jialun Shen" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Sgallon's Homepage" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -101,7 +101,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Jialun Shen</h1>
+      <h1 class="site-title">Sgallon's Homepage</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -120,11 +120,6 @@
         <li class="menu-item menu-item-home">
 
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
 
   </li>
         <li class="menu-item menu-item-blog">
@@ -171,7 +166,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jialun Shen">
+      <meta itemprop="name" content="Sgallon's Homepage">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -363,7 +358,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Hexo"><span class="nav-text">Install Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-Quick-Start"><span class="nav-text">Hexo Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Initialize-a-Hexo-project"><span class="nav-text">Initialize a Hexo project</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server-locally"><span class="nav-text">Run server locally</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Change-Hexo-config"><span class="nav-text">Change Hexo config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Change-Hexo-theme"><span class="nav-text">Change Hexo theme</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NexT"><span class="nav-text">NexT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-text">Deploy to remote sites</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Github-Pages"><span class="nav-text">Github Pages</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optional-Save-Site-Source-Code-on-Github"><span class="nav-text">(Optional) Save Site Source Code on Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-text">References</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -431,7 +425,7 @@
 <div class="copyright">
   
   &copy; 2020 – 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fas fa-globe"></i>
   </span>
