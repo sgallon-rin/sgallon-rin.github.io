@@ -1,91 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Create Personal Website with Hexo and Github Pages</title>
-    <url>/2022/10/25/create-personal-website-with-hexo-and-github-pages/</url>
-    <content><![CDATA[<p>In this post, I will explain the details I build my own Github homepage with <a href="https://hexo.io">Hexo</a>, theme <a href="https://github.com/theme-next/hexo-theme-next">NexT</a>,  and <a href="https://pages.github.com">Github Pages</a>.</p>
-<p>Basically, I followed the steps in this Zhihu answer:<br><a href="https://www.zhihu.com/question/20962496/answer/1882882782">https://www.zhihu.com/question/20962496/answer/1882882782</a></p>
-<span id="more"></span>
-<h2 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h2><p>Requirements:</p>
-<ul>
-<li><a href="https://nodejs.org/en/">Node.js</a> (recommends 12.0 or higher)</li>
-<li><a href="https://git-scm.com">Git</a></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>Refer to: <a href="https://hexo.io/docs/">https://hexo.io/docs/</a></p>
-<h2 id="Hexo-Quick-Start"><a href="#Hexo-Quick-Start" class="headerlink" title="Hexo Quick Start"></a>Hexo Quick Start</h2><h3 id="Initialize-a-Hexo-project"><a href="#Initialize-a-Hexo-project" class="headerlink" title="Initialize a Hexo project"></a>Initialize a Hexo project</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<p>Refer to: <a href="https://hexo.io/docs/setup">https://hexo.io/docs/setup</a></p>
-<p>In my case, I want to use this Hexo project as my Github homepage:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;your-username.github.io&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;your-username.github.io&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
-<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<p>Remember to perform <code>hexo clean</code> and <code>hexo generate</code> after you modified your site.<br>Then proceed to <code>hexo server</code> for local test or <code>hexo depoly</code> for deployment.</p>
-<h3 id="Run-server-locally"><a href="#Run-server-locally" class="headerlink" title="Run server locally"></a>Run server locally</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<p>This runs Hexo locally, so that you can view your site before deploying it to remote sites.<br>The output is like:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">INFO  Validating config</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure></p>
-<h3 id="Change-Hexo-config"><a href="#Change-Hexo-config" class="headerlink" title="Change Hexo config"></a>Change Hexo config</h3><p>Modify <code>_config.yml</code> in the site root directory.<br>This changes global settings for Hexo.</p>
-<p>Please refer to <a href="https://hexo.io/docs/configuration">Configuration | Hexo</a> for details.</p>
-<h3 id="Change-Hexo-theme"><a href="#Change-Hexo-theme" class="headerlink" title="Change Hexo theme"></a>Change Hexo theme</h3><h4 id="NexT"><a href="#NexT" class="headerlink" title="NexT"></a>NexT</h4><p>I use theme <a href="https://github.com/theme-next/hexo-theme-next">NexT</a> for my site:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> &lt;your-hexo-site&gt;</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
-<p>Modify <code>_config.yml</code> in the site root directory to enable the theme:<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure></p>
-<p>Modify <code>theme/next/_config.yml</code> for theme-specific config.</p>
-<p>Please refer to <a href="https://theme-next.js.org">NexT Documentation</a> for details.</p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<h4 id="Github-Pages"><a href="#Github-Pages" class="headerlink" title="Github Pages"></a>Github Pages</h4><p>Install plugin:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>Modify <code>_config.yml</code> in site root dir:<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
-<p>Then run <code>hexo deploy</code>.<br>You should be able to see you site at <code>&lt;username&gt;.github.io</code>.</p>
-<h2 id="Optional-Save-Site-Source-Code-on-Github"><a href="#Optional-Save-Site-Source-Code-on-Github" class="headerlink" title="(Optional) Save Site Source Code on Github"></a>(Optional) Save Site Source Code on Github</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init</span><br><span class="line">$ git checkout -b <span class="built_in">source</span></span><br><span class="line">$ git add -A</span><br><span class="line">$ git commit -m <span class="string">&quot;init blog&quot;</span></span><br><span class="line">$ git remote add origin git@github.com:&#123;username&#125;/&#123;username&#125;.github.io.git</span><br><span class="line">$ git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>Note that some of them are written in Chinese.</p>
-<p>Documentation</p>
-<ul>
-<li><a href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></li>
-<li><a href="https://hexo.io/docs/">Documentation | Hexo</a></li>
-<li><a href="https://theme-next.js.org">NexT Documentation</a></li>
-<li><a href="http://theme-next.iissnan.com">NexT使用文档</a></li>
-</ul>
-<p>Online Posts</p>
-<ul>
-<li><a href="https://www.zhihu.com/question/20962496/answer/1882882782">https://www.zhihu.com/question/20962496/answer/1882882782</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/149306963">https://zhuanlan.zhihu.com/p/149306963</a></li>
-<li><a href="https://uchuhimo.me/2017/04/11/genesis">https://uchuhimo.me/2017/04/11/genesis</a></li>
-<li><a href="https://www.jianshu.com/p/53670692c5a6">https://www.jianshu.com/p/53670692c5a6</a></li>
-<li><a href="https://www.jianshu.com/p/a9e0b95f57a5">https://www.jianshu.com/p/a9e0b95f57a5</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>github</tag>
-        <tag>website</tag>
-        <tag>hexo</tag>
-        <tag>English</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>httpd重启失败No space left on device: AH00023: Couldn&#39;t create the ssl-cache mutex</title>
-    <url>/2020/12/25/httpd-service-start-failed/</url>
-    <content><![CDATA[<p>httpd.service重启失败，报错信息如下：</p>
-<span id="more"></span>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># service httpd start</span><br><span class="line">Redirecting to /bin/systemctl start httpd.service</span><br><span class="line">Job for httpd.service failed because the control process exited with error code. See &quot;systemctl status httpd.service&quot; and &quot;journalctl -xe&quot; for details.</span><br><span class="line"># service httpd status</span><br><span class="line">Redirecting to /bin/systemctl status httpd.service</span><br><span class="line">● httpd.service - The Apache HTTP Server</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: failed (Result: exit-code) since Tue 2020-11-24 10:23:57 CST; 5s ago</span><br><span class="line">     Docs: man:httpd(8)</span><br><span class="line">           man:apachectl(8)</span><br><span class="line">  Process: 16430 ExecReload=/usr/sbin/httpd $OPTIONS -k graceful (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 14493 ExecStart=/usr/sbin/httpd $OPTIONS -DFOREGROUND (code=exited, status=1/FAILURE)</span><br><span class="line"> Main PID: 14493 (code=exited, status=1/FAILURE)</span><br><span class="line"></span><br><span class="line">Nov 24 10:23:57 izuf68hjhpsqp9dl4p2c9cz systemd[1]: Starting The Apache HTTP Server...</span><br><span class="line">Nov 24 10:23:57 izuf68hjhpsqp9dl4p2c9cz systemd[1]: httpd.service: main process exited, code=exited, status=1/FAILURE</span><br><span class="line">Nov 24 10:23:57 izuf68hjhpsqp9dl4p2c9cz systemd[1]: Failed to start The Apache HTTP Server.</span><br><span class="line">Nov 24 10:23:57 izuf68hjhpsqp9dl4p2c9cz systemd[1]: Unit httpd.service entered failed state.</span><br><span class="line">Nov 24 10:23:57 izuf68hjhpsqp9dl4p2c9cz systemd[1]: httpd.service failed.</span><br></pre></td></tr></table></figure>
-<p>查看错误日志：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># tail -f  /var/log/httpd/error_log</span><br><span class="line">[Tue Nov 24 10:25:01.344079 2020] [suexec:notice] [pid 14748] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)</span><br><span class="line">[Tue Nov 24 10:25:01.344489 2020] [core:emerg] [pid 14748] (28)No space left on device: AH00023: Couldn&#x27;t create the ssl-cache mutex </span><br><span class="line">AH00016: Configuration Failed</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>ipcs命令，查看apache分析消息队列、共享内存和信号量：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ipcs -s | grep apache</span><br><span class="line">0x00000000 163840     apache     600        1         </span><br><span class="line">0x00000000 98305      apache     600        1         </span><br><span class="line">0x00000000 2          apache     600        1         </span><br><span class="line">0x00000000 98307      apache     600        1         </span><br><span class="line">0x00000000 98308      apache     600        1         </span><br><span class="line">0x00000000 98309      apache     600        1         </span><br><span class="line">0x00000000 163846     apache     600        1         </span><br><span class="line">0x00000000 163847     apache     600        1         </span><br><span class="line">0x00000000 8          apache     600        1         </span><br><span class="line">0x00000000 9          apache     600        1</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>删除apache分析消息队列、共享内存和信号量：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ipcs -s | grep apache | perl -e &#x27;while (&lt;STDIN&gt;) &#123; @a=split(/\s+/); print `ipcrm sem $a[1]`&#125;&#x27;</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>重启httpd，成功！</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># service httpd restart</span><br><span class="line">Redirecting to /bin/systemctl restart httpd.service</span><br><span class="line"># service httpd status</span><br><span class="line">Redirecting to /bin/systemctl status httpd.service</span><br><span class="line">● httpd.service - The Apache HTTP Server</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since Tue 2020-11-24 10:33:02 CST; 6s ago</span><br><span class="line">     Docs: man:httpd(8)</span><br><span class="line">           man:apachectl(8)</span><br><span class="line">  Process: 16430 ExecReload=/usr/sbin/httpd $OPTIONS -k graceful (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 15687 (/usr/sbin/httpd)</span><br></pre></td></tr></table></figure>
-<p>参考文章：</p>
-<p><a href="https://www.cnblogs.com/syy714363310/p/12202535.html">Apache排查问题：Apache ERROR: No space left on device: AH00023: Couldn’t create the ssl-cache mutex</a></p>
-<p><a href="https://www.cnblogs.com/wangkangluo1/archive/2012/06/04/2535042.html">ipcs 命令</a></p>
-<hr>
-<p>This is an archived post. Originally posted on <a href="https://blog.csdn.net/weixin_43538536/article/details/111662494">CSDN</a>.</p>
-]]></content>
-      <tags>
-        <tag>linux</tag>
-        <tag>中文</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>从零开始在CentOS7服务器上搭建GPU深度学习环境，并部署bert向量化服务</title>
     <url>/2021/01/04/build-gpu-deep-learning-environment-and-deploy-bert-service-on-centos7/</url>
     <content><![CDATA[<h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h2><p>这篇文档将以centos7服务器为例，介绍搭建GPU深度学习环境，并部署bert向量化服务<a href="https://github.com/hanxiao/bert-as-service">bert-as-service</a>的步骤，以及搭建过程中遇到的一些问题和解决方法，给后续在其他机器上的部署提供参考。</p>
@@ -172,9 +87,94 @@
 ]]></content>
       <tags>
         <tag>linux</tag>
-        <tag>中文</tag>
         <tag>python</tag>
         <tag>gpu</tag>
+        <tag>中文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Create Personal Website with Hexo and Github Pages</title>
+    <url>/2022/10/25/create-personal-website-with-hexo-and-github-pages/</url>
+    <content><![CDATA[<p>In this post, I will explain the details I build my own Github homepage with <a href="https://hexo.io">Hexo</a>, theme <a href="https://github.com/theme-next/hexo-theme-next">NexT</a>,  and <a href="https://pages.github.com">Github Pages</a>.</p>
+<p>Basically, I followed the steps in this Zhihu answer:<br><a href="https://www.zhihu.com/question/20962496/answer/1882882782">https://www.zhihu.com/question/20962496/answer/1882882782</a></p>
+<span id="more"></span>
+<h2 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h2><p>Requirements:</p>
+<ul>
+<li><a href="https://nodejs.org/en/">Node.js</a> (recommends 12.0 or higher)</li>
+<li><a href="https://git-scm.com">Git</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>Refer to: <a href="https://hexo.io/docs/">https://hexo.io/docs/</a></p>
+<h2 id="Hexo-Quick-Start"><a href="#Hexo-Quick-Start" class="headerlink" title="Hexo Quick Start"></a>Hexo Quick Start</h2><h3 id="Initialize-a-Hexo-project"><a href="#Initialize-a-Hexo-project" class="headerlink" title="Initialize a Hexo project"></a>Initialize a Hexo project</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>Refer to: <a href="https://hexo.io/docs/setup">https://hexo.io/docs/setup</a></p>
+<p>In my case, I want to use this Hexo project as my Github homepage:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;your-username.github.io&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;your-username.github.io&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
+<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<p>Remember to perform <code>hexo clean</code> and <code>hexo generate</code> after you modified your site.<br>Then proceed to <code>hexo server</code> for local test or <code>hexo depoly</code> for deployment.</p>
+<h3 id="Run-server-locally"><a href="#Run-server-locally" class="headerlink" title="Run server locally"></a>Run server locally</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<p>This runs Hexo locally, so that you can view your site before deploying it to remote sites.<br>The output is like:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">INFO  Validating config</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure></p>
+<h3 id="Change-Hexo-config"><a href="#Change-Hexo-config" class="headerlink" title="Change Hexo config"></a>Change Hexo config</h3><p>Modify <code>_config.yml</code> in the site root directory.<br>This changes global settings for Hexo.</p>
+<p>Please refer to <a href="https://hexo.io/docs/configuration">Configuration | Hexo</a> for details.</p>
+<h3 id="Change-Hexo-theme"><a href="#Change-Hexo-theme" class="headerlink" title="Change Hexo theme"></a>Change Hexo theme</h3><h4 id="NexT"><a href="#NexT" class="headerlink" title="NexT"></a>NexT</h4><p>I use theme <a href="https://github.com/theme-next/hexo-theme-next">NexT</a> for my site:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> &lt;your-hexo-site&gt;</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
+<p>Modify <code>_config.yml</code> in the site root directory to enable the theme:<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure></p>
+<p>Modify <code>theme/next/_config.yml</code> for theme-specific config.</p>
+<p>Please refer to <a href="https://theme-next.js.org">NexT Documentation</a> for details.</p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h4 id="Github-Pages"><a href="#Github-Pages" class="headerlink" title="Github Pages"></a>Github Pages</h4><p>Install plugin:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>Modify <code>_config.yml</code> in site root dir:<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
+<p>Then run <code>hexo deploy</code>.<br>You should be able to see you site at <code>&lt;username&gt;.github.io</code>.</p>
+<h2 id="Optional-Save-Site-Source-Code-on-Github"><a href="#Optional-Save-Site-Source-Code-on-Github" class="headerlink" title="(Optional) Save Site Source Code on Github"></a>(Optional) Save Site Source Code on Github</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init</span><br><span class="line">$ git checkout -b <span class="built_in">source</span></span><br><span class="line">$ git add -A</span><br><span class="line">$ git commit -m <span class="string">&quot;init blog&quot;</span></span><br><span class="line">$ git remote add origin git@github.com:&#123;username&#125;/&#123;username&#125;.github.io.git</span><br><span class="line">$ git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>Note that some of them are written in Chinese.</p>
+<p>Documentation</p>
+<ul>
+<li><a href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></li>
+<li><a href="https://hexo.io/docs/">Documentation | Hexo</a></li>
+<li><a href="https://theme-next.js.org">NexT Documentation</a></li>
+<li><a href="http://theme-next.iissnan.com">NexT使用文档</a></li>
+</ul>
+<p>Online Posts</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/20962496/answer/1882882782">https://www.zhihu.com/question/20962496/answer/1882882782</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/149306963">https://zhuanlan.zhihu.com/p/149306963</a></li>
+<li><a href="https://uchuhimo.me/2017/04/11/genesis">https://uchuhimo.me/2017/04/11/genesis</a></li>
+<li><a href="https://www.jianshu.com/p/53670692c5a6">https://www.jianshu.com/p/53670692c5a6</a></li>
+<li><a href="https://www.jianshu.com/p/a9e0b95f57a5">https://www.jianshu.com/p/a9e0b95f57a5</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>github</tag>
+        <tag>website</tag>
+        <tag>hexo</tag>
+        <tag>English</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>httpd重启失败No space left on device: AH00023: Couldn&#39;t create the ssl-cache mutex</title>
+    <url>/2020/12/25/httpd-service-start-failed/</url>
+    <content><![CDATA[<p>httpd.service重启失败，报错信息如下：</p>
+<span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># service httpd start</span><br><span class="line">Redirecting to /bin/systemctl start httpd.service</span><br><span class="line">Job for httpd.service failed because the control process exited with error code. See &quot;systemctl status httpd.service&quot; and &quot;journalctl -xe&quot; for details.</span><br><span class="line"># service httpd status</span><br><span class="line">Redirecting to /bin/systemctl status httpd.service</span><br><span class="line">● httpd.service - The Apache HTTP Server</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: failed (Result: exit-code) since Tue 2020-11-24 10:23:57 CST; 5s ago</span><br><span class="line">     Docs: man:httpd(8)</span><br><span class="line">           man:apachectl(8)</span><br><span class="line">  Process: 16430 ExecReload=/usr/sbin/httpd $OPTIONS -k graceful (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 14493 ExecStart=/usr/sbin/httpd $OPTIONS -DFOREGROUND (code=exited, status=1/FAILURE)</span><br><span class="line"> Main PID: 14493 (code=exited, status=1/FAILURE)</span><br><span class="line"></span><br><span class="line">Nov 24 10:23:57 izuf68hjhpsqp9dl4p2c9cz systemd[1]: Starting The Apache HTTP Server...</span><br><span class="line">Nov 24 10:23:57 izuf68hjhpsqp9dl4p2c9cz systemd[1]: httpd.service: main process exited, code=exited, status=1/FAILURE</span><br><span class="line">Nov 24 10:23:57 izuf68hjhpsqp9dl4p2c9cz systemd[1]: Failed to start The Apache HTTP Server.</span><br><span class="line">Nov 24 10:23:57 izuf68hjhpsqp9dl4p2c9cz systemd[1]: Unit httpd.service entered failed state.</span><br><span class="line">Nov 24 10:23:57 izuf68hjhpsqp9dl4p2c9cz systemd[1]: httpd.service failed.</span><br></pre></td></tr></table></figure>
+<p>查看错误日志：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># tail -f  /var/log/httpd/error_log</span><br><span class="line">[Tue Nov 24 10:25:01.344079 2020] [suexec:notice] [pid 14748] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)</span><br><span class="line">[Tue Nov 24 10:25:01.344489 2020] [core:emerg] [pid 14748] (28)No space left on device: AH00023: Couldn&#x27;t create the ssl-cache mutex </span><br><span class="line">AH00016: Configuration Failed</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>ipcs命令，查看apache分析消息队列、共享内存和信号量：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ipcs -s | grep apache</span><br><span class="line">0x00000000 163840     apache     600        1         </span><br><span class="line">0x00000000 98305      apache     600        1         </span><br><span class="line">0x00000000 2          apache     600        1         </span><br><span class="line">0x00000000 98307      apache     600        1         </span><br><span class="line">0x00000000 98308      apache     600        1         </span><br><span class="line">0x00000000 98309      apache     600        1         </span><br><span class="line">0x00000000 163846     apache     600        1         </span><br><span class="line">0x00000000 163847     apache     600        1         </span><br><span class="line">0x00000000 8          apache     600        1         </span><br><span class="line">0x00000000 9          apache     600        1</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>删除apache分析消息队列、共享内存和信号量：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ipcs -s | grep apache | perl -e &#x27;while (&lt;STDIN&gt;) &#123; @a=split(/\s+/); print `ipcrm sem $a[1]`&#125;&#x27;</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">resource(s) deleted</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>重启httpd，成功！</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># service httpd restart</span><br><span class="line">Redirecting to /bin/systemctl restart httpd.service</span><br><span class="line"># service httpd status</span><br><span class="line">Redirecting to /bin/systemctl status httpd.service</span><br><span class="line">● httpd.service - The Apache HTTP Server</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since Tue 2020-11-24 10:33:02 CST; 6s ago</span><br><span class="line">     Docs: man:httpd(8)</span><br><span class="line">           man:apachectl(8)</span><br><span class="line">  Process: 16430 ExecReload=/usr/sbin/httpd $OPTIONS -k graceful (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 15687 (/usr/sbin/httpd)</span><br></pre></td></tr></table></figure>
+<p>参考文章：</p>
+<p><a href="https://www.cnblogs.com/syy714363310/p/12202535.html">Apache排查问题：Apache ERROR: No space left on device: AH00023: Couldn’t create the ssl-cache mutex</a></p>
+<p><a href="https://www.cnblogs.com/wangkangluo1/archive/2012/06/04/2535042.html">ipcs 命令</a></p>
+<hr>
+<p>This is an archived post. Originally posted on <a href="https://blog.csdn.net/weixin_43538536/article/details/111662494">CSDN</a>.</p>
+]]></content>
+      <tags>
+        <tag>linux</tag>
+        <tag>中文</tag>
       </tags>
   </entry>
 </search>
