@@ -1,5 +1,5 @@
 ---
-title: HOME
+title: HOME-ja
 date: 2024-06-25
 comments: false
 type: about
@@ -16,11 +16,11 @@ type: about
 
 - [__PRICAI 2024__] FINE-LMT: Fine-grained Feature Learning for Multi-Modal Machine Translation. Yusong Wang, Ying Zhang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _2024 Pacific Rim International Conference on Artificial Intelligence (PRICAI)_.
 
-- [__NLPCC 2024__] Leveraging Parameter-Efficient Fine-Tuning for Multilingual Abstractive Summarization. __Jialun Shen__, Yusong Wang. In _The 13th CCF International Conference on Natural Language Processing and Chinese Computing (NLPCC 2024)_. [[code](https://github.com/sgallon-rin/peft-mas)]
+- [__NLPCC 2024__] Leveraging Parameter-Efficient Fine-Tuning for Multilingual Abstractive Summarization. __Jialun Shen__, Yusong Wang. In _The 13th CCF International Conference on Natural Language Processing and Chinese Computing (NLPCC)_. [[code](https://github.com/sgallon-rin/peft-mas)]
 
-- [__ICASSP 2024__] Inter-Modality and Intra-Sample Alignment for Multi-Modal Emotion Recognition. Yusong Wang, Dongyuan Li, __Jialun Shen__. In _2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)_. [[paper](https://ieeexplore.ieee.org/abstract/document/10446571)].
+- [__ICASSP 2024__] Inter-Modality and Intra-Sample Alignment for Multi-Modal Emotion Recognition. Yusong Wang, Dongyuan Li, __Jialun Shen__. In _2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)_. [[paper](https://ieeexplore.ieee.org/abstract/document/10446571)]
 
-- [__JSAI 2023__] Emotion-guided Multi-modal Fusion for Personality Traits Recognition. Yusong Wang, Dongyuan Li, __Jialun Shen__, Kotaro Funakoshi, Manabu Okumura. 2023年度人工知能学会全国大会（第37回）. [[paper](https://www.jstage.jst.go.jp/article/pjsai/JSAI2023/0/JSAI2023_2U4IS2c03/_article/-char/ja)].
+- [__JSAI 2023__] Emotion-guided Multi-modal Fusion for Personality Traits Recognition. Yusong Wang, Dongyuan Li, __Jialun Shen__, Kotaro Funakoshi, Manabu Okumura. 2023年度人工知能学会全国大会（第37回）. [[paper](https://www.jstage.jst.go.jp/article/pjsai/JSAI2023/0/JSAI2023_2U4IS2c03/_article/-char/ja)]
 
 
 # 学歴
@@ -50,6 +50,6 @@ type: about
 
 - 2024.04 - 2026.03 &emsp; 公益財団法人朴龍九育英会奨学金
 
-- 2023.09 - 2026.09 &emsp; 東京工業大学つばめ博士学生奨学金
+[//]: # (- 2023.09 - 2026.09 &emsp; 東京工業大学つばめ博士学生奨学金)
 
 - 2017.12 & 2021.06 &emsp; 復旦大学優秀学部生奨学金
