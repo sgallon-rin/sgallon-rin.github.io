@@ -150,6 +150,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en,default">
+    <link itemprop="mainEntityOfPage" href="https://sgallon-rin.github.io/2024/09/17/ubuntu-24-04-enable-wifi-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Jialun Shen">
+      <meta itemprop="description" content="Ph.D. student, TITech">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sgallon's Homepage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/09/17/ubuntu-24-04-enable-wifi-7/" class="post-title-link" itemprop="url">Ubuntu 24.04 LTS Upgrade Kernel to Enable Wi-Fi 7</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-09-17 13:31:50" itemprop="dateCreated datePublished" datetime="2024-09-17T13:31:50+09:00">2024-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-09-19 14:46:32" itemprop="dateModified" datetime="2024-09-19T14:46:32+09:00">2024-09-19</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>I recently upgraded the OS of my PC from Ubuntu 22.04 LTS to 24.04 LTS. </p>
+<p>I want to enable Wi-Fi 7, which works perfectly on the same device with Windows 11,<br>but only shows Bluetooth on Ubuntu (both 22.04 LTS and 24.04 LTS).</p>
+<p>I found updating linux kernel to the latest version could be a solution:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.reddit.com/r/Ubuntu/comments/1cfhnmd/ubuntu_2404_lts_qualcomm_ncm865_wifi_7_adapter/">https://www.reddit.com/r/Ubuntu/comments/1cfhnmd/ubuntu_2404_lts_qualcomm_ncm865_wifi_7_adapter/</a></li>
+<li><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/1513315/issue-with-wireless-network-connection-on-ubuntu-24-04-lts">https://askubuntu.com/questions/1513315/issue-with-wireless-network-connection-on-ubuntu-24-04-lts</a></li>
+</ul>
+<h2 id="Update-nvidia-driver"><a href="#Update-nvidia-driver" class="headerlink" title="Update nvidia driver"></a>Update nvidia driver</h2><p>My first attempt to update the kernel failed.<br>This is because I am using an old version (535) of nvidia driver. (See: <a target="_blank" rel="noopener" href="https://wiki.ubuntu.com/Kernel/MainlineBuilds">https://wiki.ubuntu.com/Kernel/MainlineBuilds</a>)</p>
+<blockquote>
+<p>First, if one is using select proprietary or out-of-tree modules<br>(e.g. bcmwl, fglrx, NVIDIA proprietary graphics drivers, VirtualBox, etc.)<br>unless there is an extra package available for the version you are testing,<br>you will need to uninstall the module first, in order to test the mainline kernel.<br>If you do not uninstall these modules first, then the upstream kernel may fail to install, or boot.</p>
+</blockquote>
+<p>After updating nvidia driver from 535 to the latest 550 in “Additional Drivers”,<br>I successfully updated the kernel as follows.</p>
+<h2 id="Upgrade-Ubuntu-kernel-version"><a href="#Upgrade-Ubuntu-kernel-version" class="headerlink" title="Upgrade Ubuntu kernel version"></a>Upgrade Ubuntu kernel version</h2><p>Refer to: <a target="_blank" rel="noopener" href="https://sypalo.com/how-to-upgrade-ubuntu">https://sypalo.com/how-to-upgrade-ubuntu</a></p>
+<h3 id="Update-packages-list"><a href="#Update-packages-list" class="headerlink" title="Update packages list"></a>Update packages list</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<h3 id="Upgrade-packages"><a href="#Upgrade-packages" class="headerlink" title="Upgrade packages"></a>Upgrade packages</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+<h3 id="Run-full-upgrade"><a href="#Run-full-upgrade" class="headerlink" title="Run full upgrade"></a>Run full upgrade</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get dist-upgrade</span><br></pre></td></tr></table></figure>
+<h3 id="Run-cleanup"><a href="#Run-cleanup" class="headerlink" title="Run cleanup"></a>Run cleanup</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
+<h3 id="Change-current-directory-to-tmp-or-elsewhere-you-like"><a href="#Change-current-directory-to-tmp-or-elsewhere-you-like" class="headerlink" title="Change current directory to /tmp (or elsewhere you like)"></a>Change current directory to /tmp (or elsewhere you like)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br></pre></td></tr></table></figure>
+<h3 id="Download-latest-stable-kernel-choose-from-https-kernel-ubuntu-com-mainline"><a href="#Download-latest-stable-kernel-choose-from-https-kernel-ubuntu-com-mainline" class="headerlink" title="Download latest stable kernel (choose from https://kernel.ubuntu.com/mainline/)"></a>Download latest stable kernel (choose from <a target="_blank" rel="noopener" href="https://kernel.ubuntu.com/mainline/">https://kernel.ubuntu.com/mainline/</a>)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget -c https://kernel.ubuntu.com/mainline/v6.10.10/amd64/linux-headers-6.10.10-061010_6.10.10-061010.202409121037_all.deb</span><br><span class="line">wget -c https://kernel.ubuntu.com/mainline/v6.10.10/amd64/linux-headers-6.10.10-061010-generic_6.10.10-061010.202409121037_amd64.deb</span><br><span class="line">wget -c https://kernel.ubuntu.com/mainline/v6.10.10/amd64/linux-image-unsigned-6.10.10-061010-generic_6.10.10-061010.202409121037_amd64.deb</span><br><span class="line">wget -c https://kernel.ubuntu.com/mainline/v6.10.10/amd64/linux-modules-6.10.10-061010-generic_6.10.10-061010.202409121037_amd64.deb</span><br></pre></td></tr></table></figure>
+<h3 id="Install-latest-stable-kernel"><a href="#Install-latest-stable-kernel" class="headerlink" title="Install latest stable kernel"></a>Install latest stable kernel</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i *.deb</span><br></pre></td></tr></table></figure>
+<h3 id="Reboot-system-after-latest-stable-kernel-upgrade"><a href="#Reboot-system-after-latest-stable-kernel-upgrade" class="headerlink" title="Reboot system after latest stable kernel upgrade"></a>Reboot system after latest stable kernel upgrade</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>Finally, the Wi-Fi icon appears and I no longer need a LAN cable.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en,default">
     <link itemprop="mainEntityOfPage" href="https://sgallon-rin.github.io/2022/10/25/create-personal-website-with-hexo-and-github-pages/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -173,10 +273,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-10-25 00:00:00 / Modified: 12:55:40" itemprop="dateCreated datePublished" datetime="2022-10-25T00:00:00+09:00">2022-10-25</time>
+              <time title="Created: 2022-10-25 00:00:00" itemprop="dateCreated datePublished" datetime="2022-10-25T00:00:00+09:00">2022-10-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-09-19 14:17:08" itemprop="dateModified" datetime="2024-09-19T14:17:08+09:00">2024-09-19</time>
+              </span>
 
           <br>
             <span class="post-meta-item" title="Symbols count in article">
@@ -262,7 +368,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-10-25 11:47:55" itemprop="dateModified" datetime="2022-10-25T11:47:55+09:00">2022-10-25</time>
+                <time title="Modified: 2024-09-19 14:17:08" itemprop="dateModified" datetime="2024-09-19T14:17:08+09:00">2024-09-19</time>
               </span>
 
           <br>
@@ -348,7 +454,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-10-25 03:07:34" itemprop="dateModified" datetime="2022-10-25T03:07:34+09:00">2022-10-25</time>
+                <time title="Modified: 2024-09-19 14:17:08" itemprop="dateModified" datetime="2024-09-19T14:17:08+09:00">2024-09-19</time>
               </span>
 
           <br>
@@ -466,13 +572,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -528,12 +634,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">15k</span>
+    <span title="Symbols count total">17k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">14 mins.</span>
+    <span title="Reading time total">15 mins.</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>

@@ -89,7 +89,6 @@
         <tag>linux</tag>
         <tag>python</tag>
         <tag>gpu</tag>
-        <tag>中文</tag>
       </tags>
   </entry>
   <entry>
@@ -149,7 +148,6 @@
         <tag>github</tag>
         <tag>website</tag>
         <tag>hexo</tag>
-        <tag>English</tag>
       </tags>
   </entry>
   <entry>
@@ -174,7 +172,36 @@
 ]]></content>
       <tags>
         <tag>linux</tag>
-        <tag>中文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu 24.04 LTS Upgrade Kernel to Enable Wi-Fi 7</title>
+    <url>/2024/09/17/ubuntu-24-04-enable-wifi-7/</url>
+    <content><![CDATA[<p>I recently upgraded the OS of my PC from Ubuntu 22.04 LTS to 24.04 LTS. </p>
+<p>I want to enable Wi-Fi 7, which works perfectly on the same device with Windows 11,<br>but only shows Bluetooth on Ubuntu (both 22.04 LTS and 24.04 LTS).</p>
+<p>I found updating linux kernel to the latest version could be a solution:</p>
+<ul>
+<li><a href="https://www.reddit.com/r/Ubuntu/comments/1cfhnmd/ubuntu_2404_lts_qualcomm_ncm865_wifi_7_adapter/">https://www.reddit.com/r/Ubuntu/comments/1cfhnmd/ubuntu_2404_lts_qualcomm_ncm865_wifi_7_adapter/</a></li>
+<li><a href="https://askubuntu.com/questions/1513315/issue-with-wireless-network-connection-on-ubuntu-24-04-lts">https://askubuntu.com/questions/1513315/issue-with-wireless-network-connection-on-ubuntu-24-04-lts</a></li>
+</ul>
+<h2 id="Update-nvidia-driver"><a href="#Update-nvidia-driver" class="headerlink" title="Update nvidia driver"></a>Update nvidia driver</h2><p>My first attempt to update the kernel failed.<br>This is because I am using an old version (535) of nvidia driver. (See: <a href="https://wiki.ubuntu.com/Kernel/MainlineBuilds">https://wiki.ubuntu.com/Kernel/MainlineBuilds</a>)</p>
+<blockquote>
+<p>First, if one is using select proprietary or out-of-tree modules<br>(e.g. bcmwl, fglrx, NVIDIA proprietary graphics drivers, VirtualBox, etc.)<br>unless there is an extra package available for the version you are testing,<br>you will need to uninstall the module first, in order to test the mainline kernel.<br>If you do not uninstall these modules first, then the upstream kernel may fail to install, or boot.</p>
+</blockquote>
+<p>After updating nvidia driver from 535 to the latest 550 in “Additional Drivers”,<br>I successfully updated the kernel as follows.</p>
+<h2 id="Upgrade-Ubuntu-kernel-version"><a href="#Upgrade-Ubuntu-kernel-version" class="headerlink" title="Upgrade Ubuntu kernel version"></a>Upgrade Ubuntu kernel version</h2><p>Refer to: <a href="https://sypalo.com/how-to-upgrade-ubuntu">https://sypalo.com/how-to-upgrade-ubuntu</a></p>
+<h3 id="Update-packages-list"><a href="#Update-packages-list" class="headerlink" title="Update packages list"></a>Update packages list</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<h3 id="Upgrade-packages"><a href="#Upgrade-packages" class="headerlink" title="Upgrade packages"></a>Upgrade packages</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+<h3 id="Run-full-upgrade"><a href="#Run-full-upgrade" class="headerlink" title="Run full upgrade"></a>Run full upgrade</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get dist-upgrade</span><br></pre></td></tr></table></figure>
+<h3 id="Run-cleanup"><a href="#Run-cleanup" class="headerlink" title="Run cleanup"></a>Run cleanup</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get autoremove</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
+<h3 id="Change-current-directory-to-tmp-or-elsewhere-you-like"><a href="#Change-current-directory-to-tmp-or-elsewhere-you-like" class="headerlink" title="Change current directory to /tmp (or elsewhere you like)"></a>Change current directory to /tmp (or elsewhere you like)</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /tmp</span><br></pre></td></tr></table></figure>
+<h3 id="Download-latest-stable-kernel-choose-from-https-kernel-ubuntu-com-mainline"><a href="#Download-latest-stable-kernel-choose-from-https-kernel-ubuntu-com-mainline" class="headerlink" title="Download latest stable kernel (choose from https://kernel.ubuntu.com/mainline/)"></a>Download latest stable kernel (choose from <a href="https://kernel.ubuntu.com/mainline/">https://kernel.ubuntu.com/mainline/</a>)</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -c https://kernel.ubuntu.com/mainline/v6.10.10/amd64/linux-headers-6.10.10-061010_6.10.10-061010.202409121037_all.deb</span><br><span class="line">wget -c https://kernel.ubuntu.com/mainline/v6.10.10/amd64/linux-headers-6.10.10-061010-generic_6.10.10-061010.202409121037_amd64.deb</span><br><span class="line">wget -c https://kernel.ubuntu.com/mainline/v6.10.10/amd64/linux-image-unsigned-6.10.10-061010-generic_6.10.10-061010.202409121037_amd64.deb</span><br><span class="line">wget -c https://kernel.ubuntu.com/mainline/v6.10.10/amd64/linux-modules-6.10.10-061010-generic_6.10.10-061010.202409121037_amd64.deb</span><br></pre></td></tr></table></figure>
+<h3 id="Install-latest-stable-kernel"><a href="#Install-latest-stable-kernel" class="headerlink" title="Install latest stable kernel"></a>Install latest stable kernel</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i *.deb</span><br></pre></td></tr></table></figure>
+<h3 id="Reboot-system-after-latest-stable-kernel-upgrade"><a href="#Reboot-system-after-latest-stable-kernel-upgrade" class="headerlink" title="Reboot system after latest stable kernel upgrade"></a>Reboot system after latest stable kernel upgrade</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>Finally, the Wi-Fi icon appears and I no longer need a LAN cable.</p>
+]]></content>
+      <tags>
+        <tag>linux</tag>
       </tags>
   </entry>
 </search>
