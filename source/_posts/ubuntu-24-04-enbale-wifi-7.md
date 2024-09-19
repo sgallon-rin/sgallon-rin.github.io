@@ -12,6 +12,8 @@ I recently upgraded the OS of my PC from Ubuntu 22.04 LTS to 24.04 LTS.
 I want to enable Wi-Fi 7, which works perfectly on the same device with Windows 11, 
 but only shows Bluetooth on Ubuntu (both 22.04 LTS and 24.04 LTS).
 
+<!--more-->
+
 I found updating linux kernel to the latest version could be a solution:
 - https://www.reddit.com/r/Ubuntu/comments/1cfhnmd/ubuntu_2404_lts_qualcomm_ncm865_wifi_7_adapter/
 - https://askubuntu.com/questions/1513315/issue-with-wireless-network-connection-on-ubuntu-24-04-lts
