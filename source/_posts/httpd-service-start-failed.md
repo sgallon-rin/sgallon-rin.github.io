@@ -2,7 +2,6 @@
 title: "httpd重启失败No space left on device: AH00023: Couldn't create the ssl-cache mutex"
 tags: 
   - linux
-  - 中文
 urlname: httpd-service-start-failed
 language: zh-CN
 date: 2020-12-25 00:00:00

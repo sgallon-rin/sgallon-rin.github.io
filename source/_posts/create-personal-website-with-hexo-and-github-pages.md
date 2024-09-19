@@ -4,7 +4,6 @@ tags:
   - github
   - website
   - hexo
-  - English
 urlname: create-personal-website-with-hexo-and-github-pages
 language: en
 date: 2022-10-25 00:00:00

@@ -4,7 +4,6 @@ tags:
   - linux
   - python
   - gpu
-  - 中文
 urlname: build-gpu-deep-learning-environment-and-deploy-bert-service-on-centos7
 language: zh-CN 
 date: 2021-01-04 00:00:00
