@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://sgallon-rin.github.io/404</loc>
+    
+    <lastmod>2024-09-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://sgallon-rin.github.io/2024/09/17/ubuntu-24-04-enable-wifi-7/</loc>
     
     <lastmod>2024-09-19</lastmod>
@@ -84,15 +93,6 @@
   
   <url>
     <loc>https://sgallon-rin.github.io/categories/</loc>
-    
-    <lastmod>2022-10-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://sgallon-rin.github.io/404</loc>
     
     <lastmod>2022-10-24</lastmod>
     
