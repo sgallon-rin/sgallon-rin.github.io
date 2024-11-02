@@ -1,5 +1,5 @@
 ---
-title: HOME-zh
+title: HOME
 date: 2024-06-25
 comments: false
 type: about
