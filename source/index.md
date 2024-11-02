@@ -7,12 +7,14 @@ type: about
 
 Welcome! &emsp; [[简体中文](./zh-CN) | [日本語](./ja)]
 
-I am Jialun Shen (沈嘉伦), a Ph.D. student at [Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/), Tokyo Institute of Technology.
+I am Jialun Shen (沈嘉伦), a Ph.D. student at [Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/), Institute of Science Tokyo (formerly Tokyo Institute of Technology).
 
 Research interests: natural language processing, deep learning
 
 
 # Publications
+
+- [__EMNLP 2024__] LAMBDA: Large Language Model-Based Data Augmentation for Multi-Modal Machine Translation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _The 2024 Conference on Empirical Methods in Natural Language Processing_.
 
 - [__PRICAI 2024__] FINE-LMT: Fine-grained Feature Learning for Multi-Modal Machine Translation. Yusong Wang, Ying Zhang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _2024 Pacific Rim International Conference on Artificial Intelligence (PRICAI)_.
 
@@ -26,7 +28,7 @@ Research interests: natural language processing, deep learning
 # Education
 
 - 2023.09 - Present &emsp; Ph.D. Student in Information and Communications Engineering
-  Dept. of Information and Communications Engineering, School of Engineering, Tokyo Institute of Technology
+  Dept. of Information and Communications Engineering, School of Engineering, Institute of Science Tokyo (formerly Tokyo Institute of Technology)
   Supervisor: Prof. [Manabu Okumura](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) ([Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/))
 
 - 2021.09 - 2023.09 &emsp; M.Eng. in Information and Communications Engineering

@@ -7,12 +7,14 @@ type: about
 
 欢迎！&emsp; [[English](./) | [日本語](./ja)]
 
-我是沈嘉伦，东京工业大学[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)在读博士。
+我是沈嘉伦，东京科学大学（原东京工业大学）[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)在读博士。
 
 研究方向：自然语言处理，深度学习
 
 
 # 发表论文
+
+- [__EMNLP 2024__] LAMBDA: Large Language Model-Based Data Augmentation for Multi-Modal Machine Translation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _The 2024 Conference on Empirical Methods in Natural Language Processing_.
 
 - [__PRICAI 2024__] FINE-LMT: Fine-grained Feature Learning for Multi-Modal Machine Translation. Yusong Wang, Ying Zhang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _2024 Pacific Rim International Conference on Artificial Intelligence (PRICAI)_.
 
@@ -25,7 +27,7 @@ type: about
 
 # 教育经历
 
-- 2023.09 - 至今 &emsp; 东京工业大学 工学院 情报通信系 博士在读
+- 2023.09 - 至今 &emsp; 东京科学大学（原东京工业大学） 工学院 情报通信系 博士在读
   专业：信息与通信工程
   指导教师：[奥村学](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) （[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)）
 

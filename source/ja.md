@@ -7,12 +7,14 @@ type: about
 
 ようこそ！ &emsp; [[English](./) | [简体中文](./zh-CN)]
 
-私は沈 嘉倫（ﾁﾝ ｶﾛﾝ）と申します。東京工業大学大学院[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)所属博士学生です。
+私は沈 嘉倫（ﾁﾝ ｶﾛﾝ）と申します。東京科学大学（旧・東京工業大学）大学院[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)所属博士学生です。
 
 研究テーマ：自然言語処理、深層学習
 
 
 # 発表論文
+
+- [__EMNLP 2024__] LAMBDA: Large Language Model-Based Data Augmentation for Multi-Modal Machine Translation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _The 2024 Conference on Empirical Methods in Natural Language Processing_.
 
 - [__PRICAI 2024__] FINE-LMT: Fine-grained Feature Learning for Multi-Modal Machine Translation. Yusong Wang, Ying Zhang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _2024 Pacific Rim International Conference on Artificial Intelligence (PRICAI)_.
 
@@ -25,7 +27,7 @@ type: about
 
 # 学歴
 
-- 2023.09 - 現在 &emsp; 東京工業大学大学院 工学院 情報通信系 情報通信コース 博士後期課程
+- 2023.09 - 現在 &emsp; 東京科学大学（旧・東京工業大学）大学院 工学院 情報通信系 情報通信コース 博士後期課程
   専攻：情報通信工学
   指導教員：[奥村 学](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) （[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)）
 
