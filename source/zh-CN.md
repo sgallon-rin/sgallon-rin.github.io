@@ -20,6 +20,8 @@ type: about
 
 - [__NLPCC 2024__] Leveraging Parameter-Efficient Fine-Tuning for Multilingual Abstractive Summarization. __Jialun Shen__, Yusong Wang. In _The 13th CCF International Conference on Natural Language Processing and Chinese Computing (NLPCC)_. [[code](https://github.com/sgallon-rin/peft-mas)]
 
+- [__MLNLP 2024__] ELDA: Enhancing Multi-modal Machine Translation via Large Language Model-Driven Data Augmentation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Zhong Shuai, Mingkun Xu. In _2024 IEEE 7th International Conference on Machine Learning and Natural Language Processing (MLNLP 2024)_.
+
 - [__ICASSP 2024__] Inter-Modality and Intra-Sample Alignment for Multi-Modal Emotion Recognition. Yusong Wang, Dongyuan Li, __Jialun Shen__. In _2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)_. [[paper](https://ieeexplore.ieee.org/abstract/document/10446571)]
 
 - [__JSAI 2023__] Emotion-guided Multi-modal Fusion for Personality Traits Recognition. Yusong Wang, Dongyuan Li, __Jialun Shen__, Kotaro Funakoshi, Manabu Okumura. In _Proceedings of the 37th Annual Conference of the Japanese Society for Artificial Intelligence_. [[paper](https://www.jstage.jst.go.jp/article/pjsai/JSAI2023/0/JSAI2023_2U4IS2c03/_article/-char/en)]
