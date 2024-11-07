@@ -18,7 +18,7 @@ type: about
 
 - [__PRICAI 2024__] FINE-LMT: Fine-grained Feature Learning for Multi-Modal Machine Translation. Yusong Wang, Ying Zhang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _2024 Pacific Rim International Conference on Artificial Intelligence (PRICAI)_.
 
-- [__NLPCC 2024__] Leveraging Parameter-Efficient Fine-Tuning for Multilingual Abstractive Summarization. __Jialun Shen__, Yusong Wang. In _The 13th CCF International Conference on Natural Language Processing and Chinese Computing (NLPCC)_. [[code](https://github.com/sgallon-rin/peft-mas)]
+- [__NLPCC 2024__] Leveraging Parameter-Efficient Fine-Tuning for Multilingual Abstractive Summarization. __Jialun Shen__, Yusong Wang. In _The 13th CCF International Conference on Natural Language Processing and Chinese Computing (NLPCC)_. [[paper](https://link.springer.com/chapter/10.1007/978-981-97-9437-9_23)] [[code](https://github.com/sgallon-rin/peft-mas)]
 
 - [__MLNLP 2024__] ELDA: Enhancing Multi-modal Machine Translation via Large Language Model-Driven Data Augmentation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Zhong Shuai, Mingkun Xu. In _2024 IEEE 7th International Conference on Machine Learning and Natural Language Processing (MLNLP 2024)_.
 
