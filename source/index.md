@@ -14,7 +14,7 @@ Research interests: natural language processing, deep learning
 
 # Publications
 
-- [__EMNLP 2024__] LAMBDA: Large Language Model-Based Data Augmentation for Multi-Modal Machine Translation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _The 2024 Conference on Empirical Methods in Natural Language Processing_.
+- [__EMNLP 2024__] LAMBDA: Large Language Model-Based Data Augmentation for Multi-Modal Machine Translation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _Findings of the Association for Computational Linguistics: EMNLP 2024_. [[paper](https://aclanthology.org/2024.findings-emnlp.893/)]
 
 - [__PRICAI 2024__] FINE-LMT: Fine-grained Feature Learning for Multi-Modal Machine Translation. Yusong Wang, Ying Zhang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _2024 Pacific Rim International Conference on Artificial Intelligence (PRICAI)_.
 
