@@ -7,16 +7,34 @@ type: about
 
 Welcome! &emsp; [[简体中文](./zh-CN) | [日本語](./ja)]
 
-I am Jialun Shen (沈嘉伦), a Ph.D. student at [Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/), Institute of Science Tokyo (formerly Tokyo Institute of Technology).
+I am Jialun Shen (沈嘉伦), a Ph.D. student at [Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/), [Institute of Science Tokyo](https://www.isct.ac.jp/en) (formerly [Tokyo Institute of Technology](https://www.titech.ac.jp/english)).
 
 Research interests: natural language processing, deep learning
+
+
+# Education
+
+- 2023.09 - Present &emsp; Ph.D. Student in Information and Communications Engineering
+  [Dept. of Information and Communications Engineering, School of Engineering](https://educ.titech.ac.jp/ict/eng/), [Institute of Science Tokyo](https://www.isct.ac.jp/en) (formerly [Tokyo Institute of Technology](https://www.titech.ac.jp/english))
+  Supervisor: Prof. [Manabu Okumura](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) ([Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/))
+
+- 2021.09 - 2023.09 &emsp; M.Eng. in Information and Communications Engineering
+  [Dept. of Information and Communications Engineering, School of Engineering](https://educ.titech.ac.jp/ict/eng/), [Tokyo Institute of Technology](https://www.titech.ac.jp/english)
+  Supervisor: Prof. [Manabu Okumura](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) ([Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/))
+
+- 2016.09 - 2021.06 &emsp; B.Sc. in Data Science and Big Data Technology
+  [School of Data Science](https://sds.fudan.edu.cn), [Fudan University](https://www.fudan.edu.cn/en/)
+  Supervisor: Prof. [Deqing Yang](http://kw.fudan.edu.cn/people/yangdeqing/) ([Knowledge Works Research Laboratory](http://kw.fudan.edu.cn))
+
+- 2019.03 - 2019.07 &emsp; Exchange Student in Economics
+  [School of Business and Economics](https://www.wiwi.hu-berlin.de/en/mainpage), [Humboldt University of Berlin](https://www.hu-berlin.de/en)
 
 
 # Publications
 
 - [__EMNLP 2024__] LAMBDA: Large Language Model-Based Data Augmentation for Multi-Modal Machine Translation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _Findings of the Association for Computational Linguistics: EMNLP 2024_. [[paper](https://aclanthology.org/2024.findings-emnlp.893/)]
 
-- [__PRICAI 2024__] FINE-LMT: Fine-grained Feature Learning for Multi-Modal Machine Translation. Yusong Wang, Ying Zhang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _2024 Pacific Rim International Conference on Artificial Intelligence (PRICAI)_.
+- [__PRICAI 2024__] FINE-LMT: Fine-grained Feature Learning for Multi-Modal Machine Translation. Yusong Wang, Ying Zhang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _2024 Pacific Rim International Conference on Artificial Intelligence (PRICAI)_. [[paper](https://link.springer.com/chapter/10.1007/978-981-96-0119-6_32)]
 
 - [__NLPCC 2024__] Leveraging Parameter-Efficient Fine-Tuning for Multilingual Abstractive Summarization. __Jialun Shen__, Yusong Wang. In _The 13th CCF International Conference on Natural Language Processing and Chinese Computing (NLPCC)_. [[paper](https://link.springer.com/chapter/10.1007/978-981-97-9437-9_23)] [[code](https://github.com/sgallon-rin/peft-mas)]
 
@@ -27,24 +45,6 @@ Research interests: natural language processing, deep learning
 - [__JSAI 2023__] Emotion-guided Multi-modal Fusion for Personality Traits Recognition. Yusong Wang, Dongyuan Li, __Jialun Shen__, Kotaro Funakoshi, Manabu Okumura. In _Proceedings of the 37th Annual Conference of the Japanese Society for Artificial Intelligence_. [[paper](https://www.jstage.jst.go.jp/article/pjsai/JSAI2023/0/JSAI2023_2U4IS2c03/_article/-char/en)]
 
 
-# Education
-
-- 2023.09 - Present &emsp; Ph.D. Student in Information and Communications Engineering
-  Dept. of Information and Communications Engineering, School of Engineering, Institute of Science Tokyo (formerly Tokyo Institute of Technology)
-  Supervisor: Prof. [Manabu Okumura](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) ([Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/))
-
-- 2021.09 - 2023.09 &emsp; M.Eng. in Information and Communications Engineering
-  Dept. of Information and Communications Engineering, School of Engineering, Tokyo Institute of Technology
-  Supervisor: Prof. [Manabu Okumura](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) ([Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/))
-
-- 2016.09 - 2021.06 &emsp; B.Sc. in Data Science and Big Data Technology
-  School of Data Science, Fudan University
-  Supervisor: Prof. [Deqing Yang](http://kw.fudan.edu.cn/people/yangdeqing/)
-
-- 2019.03 - 2019.07 &emsp; Exchange Student in Economics
-  School of Business and Economics, Humboldt University of Berlin
-
-
 # Working Experience
 
 - 2020.10 - 2021.08 &emsp; Research and Development Engineer (Internship), [Monetware Inc.](http://www.monetware.com)
@@ -52,7 +52,7 @@ Research interests: natural language processing, deep learning
 
 # Honors
 
-- 2024.04 - 2026.03 &emsp; Park Yong Koo Scholarship (Park Yong Koo Scholarship Foundation)
+- 2024.04 - 2026.03 &emsp; Park Yong Koo Scholarship ([Park Yong Koo Scholarship Foundation](https://www.disclo-koeki.org/21a/01202/index.html))
 
 [//]: # (- 2023.09 - 2026.09 &emsp; Tokyo Tech Tsubame Scholarship for Doctoral Students)
 
