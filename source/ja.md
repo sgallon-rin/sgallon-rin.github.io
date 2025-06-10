@@ -32,6 +32,10 @@ type: about
 
 # 発表論文
 
+（* denotes equal contribution)
+
+- [__ICML 2025__] Enhancing Graph Contrastive Learning for Protein Graphs from Perspective of Invariance. Yusong Wang\*, Shiyin Tan\*, __Jialun Shen__\*, Yicheng Xu, Haobo Song, Qi Xu, Prayag Tiwari, Mingkun Xu. In _Forty-second International Conference on Machine Learning_.
+
 - [__ICASSP 2025__] ClingTP: Curriculum Learning based Multi-style Title Prefix Generation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Shuai Zhong, Mingkun Xu. In _2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)_. [[paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10890491)]
 
 - [__EMNLP 2024__] LAMBDA: Large Language Model-Based Data Augmentation for Multi-Modal Machine Translation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Mingkun Xu, Kotaro Funakoshi, Manabu Okumura. In _Findings of the Association for Computational Linguistics: EMNLP 2024_. [[paper](https://aclanthology.org/2024.findings-emnlp.893/)]
