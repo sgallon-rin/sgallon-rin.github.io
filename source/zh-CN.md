@@ -34,7 +34,7 @@ type: about
 
 （* denotes equal contribution)
 
-- [__ICML 2025__] Enhancing Graph Contrastive Learning for Protein Graphs from Perspective of Invariance. Yusong Wang\*, Shiyin Tan\*, __Jialun Shen__\*, Yicheng Xu, Haobo Song, Qi Xu, Prayag Tiwari, Mingkun Xu. In _Forty-second International Conference on Machine Learning_.
+- [__ICML 2025__] Enhancing Graph Contrastive Learning for Protein Graphs from Perspective of Invariance. Yusong Wang\*, Shiyin Tan\*, __Jialun Shen__\*, Yicheng Xu, Haobo Song, Qi Xu, Prayag Tiwari, Mingkun Xu. In _Forty-second International Conference on Machine Learning_. [[paper](https://icml.cc/virtual/2025/poster/44491)]
 
 - [__ICASSP 2025__] ClingTP: Curriculum Learning based Multi-style Title Prefix Generation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Shuai Zhong, Mingkun Xu. In _2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)_. [[paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10890491)]
 
@@ -44,7 +44,7 @@ type: about
 
 - [__NLPCC 2024__] Leveraging Parameter-Efficient Fine-Tuning for Multilingual Abstractive Summarization. __Jialun Shen__, Yusong Wang. In _The 13th CCF International Conference on Natural Language Processing and Chinese Computing (NLPCC)_. [[paper](https://link.springer.com/chapter/10.1007/978-981-97-9437-9_23)] [[code](https://github.com/sgallon-rin/peft-mas)]
 
-- [__MLNLP 2024__] ELDA: Enhancing Multi-modal Machine Translation via Large Language Model-Driven Data Augmentation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Zhong Shuai, Mingkun Xu. In _2024 IEEE 7th International Conference on Machine Learning and Natural Language Processing (MLNLP 2024)_. [[paper](https://ieeexplore.ieee.org/abstract/document/10800404)]
+- [__MLNLP 2024__] ELDA: Enhancing Multi-modal Machine Translation via Large Language Model-Driven Data Augmentation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Shuai Zhong, Mingkun Xu. In _2024 IEEE 7th International Conference on Machine Learning and Natural Language Processing (MLNLP 2024)_. [[paper](https://ieeexplore.ieee.org/abstract/document/10800404)]
 
 - [__ICASSP 2024__] Inter-Modality and Intra-Sample Alignment for Multi-Modal Emotion Recognition. Yusong Wang, Dongyuan Li, __Jialun Shen__. In _2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)_. [[paper](https://ieeexplore.ieee.org/abstract/document/10446571)]
 
