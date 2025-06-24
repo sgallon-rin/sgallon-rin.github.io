@@ -34,7 +34,7 @@ type: about
 
 （* denotes equal contribution)
 
-- [__ICML 2025__] Enhancing Graph Contrastive Learning for Protein Graphs from Perspective of Invariance. Yusong Wang\*, Shiyin Tan\*, __Jialun Shen__\*, Yicheng Xu, Haobo Song, Qi Xu, Prayag Tiwari, Mingkun Xu. In _Forty-second International Conference on Machine Learning_. [[paper](https://icml.cc/virtual/2025/poster/44491)]
+- [__ICML 2025__] Enhancing Graph Contrastive Learning for Protein Graphs from Perspective of Invariance. Yusong Wang\*, Shiyin Tan\*, __Jialun Shen__\*, Yicheng Xu, Haobo Song, Qi Xu, Prayag Tiwari, Mingkun Xu. In _Forty-second International Conference on Machine Learning_. [[paper](https://openreview.net/pdf?id=g2hucDbOJt)]
 
 - [__ICASSP 2025__] ClingTP: Curriculum Learning based Multi-style Title Prefix Generation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Shuai Zhong, Mingkun Xu. In _2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)_. [[paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10890491)]
 

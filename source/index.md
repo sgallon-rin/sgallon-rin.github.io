@@ -27,14 +27,14 @@ Research interests: natural language processing, deep learning
   Supervisor: Prof. [Deqing Yang](http://kw.fudan.edu.cn/people/yangdeqing/) ([Knowledge Works Research Laboratory](http://kw.fudan.edu.cn))
 
 - 2019.03 - 2019.07 &emsp; Exchange Student in Economics
-  [School of Business and Economics](https://www.wiwi.hu-berlin.de/en/mainpage), [Humboldt University of Berlin](https://www.hu-berlin.de/en)
+  [School of Business and Economics](https://www.wiwi.hu-berlin.de/en/mainpage), [Humboldt-Universität zu Berlin](https://www.hu-berlin.de/en)
 
 
 # Publications
 
 （* denotes equal contribution)
 
-- [__ICML 2025__] Enhancing Graph Contrastive Learning for Protein Graphs from Perspective of Invariance. Yusong Wang\*, Shiyin Tan\*, __Jialun Shen__\*, Yicheng Xu, Haobo Song, Qi Xu, Prayag Tiwari, Mingkun Xu. In _Forty-second International Conference on Machine Learning_. [[paper](https://icml.cc/virtual/2025/poster/44491)]
+- [__ICML 2025__] Enhancing Graph Contrastive Learning for Protein Graphs from Perspective of Invariance. Yusong Wang\*, Shiyin Tan\*, __Jialun Shen__\*, Yicheng Xu, Haobo Song, Qi Xu, Prayag Tiwari, Mingkun Xu. In _Forty-second International Conference on Machine Learning_. [[paper](https://openreview.net/pdf?id=g2hucDbOJt)]
 
 - [__ICASSP 2025__] ClingTP: Curriculum Learning based Multi-style Title Prefix Generation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Shuai Zhong, Mingkun Xu. In _2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)_. [[paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10890491)]
 
