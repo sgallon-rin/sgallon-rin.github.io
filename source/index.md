@@ -9,7 +9,7 @@ Welcome! &emsp; [[简体中文](./zh-CN) | [日本語](./ja)]
 
 I am Jialun Shen (沈嘉伦), a Ph.D. student at [Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/), [Institute of Science Tokyo](https://www.isct.ac.jp/en) (formerly [Tokyo Institute of Technology](https://www.titech.ac.jp/english)).
 
-Research interests: natural language processing, deep learning
+Research interests: multimodal AI, large language models, natural language processing
 
 
 # Education

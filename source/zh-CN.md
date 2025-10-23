@@ -9,7 +9,7 @@ type: about
 
 我是沈嘉伦，[东京科学大学](https://www.isct.ac.jp/en)（原・[东京工业大学](https://www.titech.ac.jp/english)）[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)在读博士。
 
-研究方向：自然语言处理，深度学习
+研究方向：多模态AI，大模型，自然语言处理
 
 
 # 教育经历
