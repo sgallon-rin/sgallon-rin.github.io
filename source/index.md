@@ -34,6 +34,8 @@ Research interests: multimodal AI, large language models, natural language proce
 
 （* denotes equal contribution)
 
+- [__AAAI 2026__] MMPG: MoE-based Adaptive Multi-Perspective Graph Fusion for Protein Representation Learning. Yusong Wang\*, __Jialun Shen__\*, Zhihao Wu, Yicheng Xu, Shiyin Tan, Mingkun Xu, Changshuo Wang, Zixing Song, Prayag Tiwari. In _The Fortieth AAAI Conference on Artificial Intelligence_.
+
 - [__ICML 2025__] Enhancing Graph Contrastive Learning for Protein Graphs from Perspective of Invariance. Yusong Wang\*, Shiyin Tan\*, __Jialun Shen__\*, Yicheng Xu, Haobo Song, Qi Xu, Prayag Tiwari, Mingkun Xu. In _Forty-second International Conference on Machine Learning_. [[paper](https://openreview.net/pdf?id=g2hucDbOJt)]
 
 - [__ICASSP 2025__] ClingTP: Curriculum Learning based Multi-style Title Prefix Generation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Shuai Zhong, Mingkun Xu. In _2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)_. [[paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10890491)]
@@ -63,3 +65,7 @@ Research interests: multimodal AI, large language models, natural language proce
 [//]: # (- 2023.09 - 2026.09 &emsp; Tokyo Tech Tsubame Scholarship for Doctoral Students)
 
 - 2017.12 & 2021.06 &emsp; Scholarship for Outstanding Undergraduate Students at Fudan University
+
+# Academic Service
+
+- Conference Reviewer: AAAI 2026

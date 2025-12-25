@@ -34,6 +34,8 @@ type: about
 
 （* denotes equal contribution)
 
+- [__AAAI 2026__] MMPG: MoE-based Adaptive Multi-Perspective Graph Fusion for Protein Representation Learning. Yusong Wang\*, __Jialun Shen__\*, Zhihao Wu, Yicheng Xu, Shiyin Tan, Mingkun Xu, Changshuo Wang, Zixing Song, Prayag Tiwari. In _The Fortieth AAAI Conference on Artificial Intelligence_.
+
 - [__ICML 2025__] Enhancing Graph Contrastive Learning for Protein Graphs from Perspective of Invariance. Yusong Wang\*, Shiyin Tan\*, __Jialun Shen__\*, Yicheng Xu, Haobo Song, Qi Xu, Prayag Tiwari, Mingkun Xu. In _Forty-second International Conference on Machine Learning_. [[paper](https://openreview.net/pdf?id=g2hucDbOJt)]
 
 - [__ICASSP 2025__] ClingTP: Curriculum Learning based Multi-style Title Prefix Generation. Yusong Wang, Dongyuan Li, __Jialun Shen__, Yicheng Xu, Shuai Zhong, Mingkun Xu. In _2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)_. [[paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10890491)]
@@ -63,3 +65,7 @@ type: about
 [//]: # (- 2023.09 - 2026.09 &emsp; 东京工业大学Tsubame博士学生奖学金)
 
 - 2017.12 & 2021.06 &emsp; 复旦大学本科优秀学生奖学金
+
+# 学术服务
+
+- 国际会议审稿人：AAAI 2026
