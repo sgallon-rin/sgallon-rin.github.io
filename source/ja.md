@@ -34,7 +34,7 @@ type: about
 
 （* denotes equal contribution)
 
-- [__AAAI 2026__] MMPG: MoE-based Adaptive Multi-Perspective Graph Fusion for Protein Representation Learning. Yusong Wang\*, __Jialun Shen__\*, Zhihao Wu, Yicheng Xu, Shiyin Tan, Mingkun Xu, Changshuo Wang, Zixing Song, Prayag Tiwari. In _The Fortieth AAAI Conference on Artificial Intelligence_. **(Oral Presentation)** [[paper](https://arxiv.org/abs/2601.10157)]
+- [__AAAI 2026__] MMPG: MoE-based Adaptive Multi-Perspective Graph Fusion for Protein Representation Learning. Yusong Wang\*, __Jialun Shen__\*, Zhihao Wu, Yicheng Xu, Shiyin Tan, Mingkun Xu, Changshuo Wang, Zixing Song, Prayag Tiwari. In _The Fortieth AAAI Conference on Artificial Intelligence_. **(Oral Presentation)** [[paper](https://ojs.aaai.org/index.php/AAAI/article/view/37096)] [[code](https://github.com/wykstc/MMPG)]
 
 - [__ICML 2025__] Enhancing Graph Contrastive Learning for Protein Graphs from Perspective of Invariance. Yusong Wang\*, Shiyin Tan\*, __Jialun Shen__\*, Yicheng Xu, Haobo Song, Qi Xu, Prayag Tiwari, Mingkun Xu. In _Forty-second International Conference on Machine Learning_. [[paper](https://icml.cc/virtual/2025/poster/44491)]
 
