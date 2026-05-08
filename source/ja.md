@@ -55,6 +55,8 @@ type: about
 
 # 職歴
 
+- 2026.05 - 現在 &emsp; AIエンジニア（インターンシップ）, [ファーウェイ](https://www.huawei.com/jp/)
+
 - 2020.10 - 2021.08 &emsp; 研究開発エンジニア（インターンシップ）, [Monetware Inc.](http://www.monetware.com)
 
 

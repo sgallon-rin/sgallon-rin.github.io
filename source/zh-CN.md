@@ -55,6 +55,8 @@ type: about
 
 # 工作经历
 
+- 2026.05 - 至今 &emsp; AI工程师（实习）, [华为技术有限公司](https://www.huawei.com/cn/)
+
 - 2020.10 - 2021.08 &emsp; 研发工程师（实习）, [上海萌泰数据科技股份有限公司](http://www.monetware.com)
 
 

@@ -55,6 +55,8 @@ Research interests: multimodal AI, large language models, natural language proce
 
 # Working Experience
 
+- 2026.05 - Present &emsp; AI Engineer (Internship), [Huawei Technologies Co., Ltd.](https://www.huawei.com/en/)
+
 - 2020.10 - 2021.08 &emsp; Research and Development Engineer (Internship), [Monetware Inc.](http://www.monetware.com)
 
 
