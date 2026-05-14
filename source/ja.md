@@ -9,7 +9,7 @@ type: about
 
 私は沈 嘉倫（ﾁﾝ ｶﾛﾝ）と申します。[東京科学大学](https://www.isct.ac.jp/ja)（旧・[東京工業大学](https://www.titech.ac.jp)）大学院[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)所属博士学生です。
 
-研究テーマ：マルチモーダルAI、大規模言語モデル、自然言語処理
+研究テーマ：マルチモーダルAI、AI Agents、AI for Science、大規模言語モデル、自然言語処理
 
 
 # 学歴
