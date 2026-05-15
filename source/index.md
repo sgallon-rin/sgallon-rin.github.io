@@ -66,6 +66,8 @@ Research Interests: Multimodal AI, AI Agents, AI for Science,　Large Language M
 
 [//]: # (- 2023.09 - 2026.09 &emsp; Tokyo Tech Tsubame Scholarship for Doctoral Students)
 
+- 2024.01 & 2026.01 &emsp; Tokyo Tech Tsubame Scholarship for Doctoral Students
+
 - 2017.12 & 2021.06 &emsp; Scholarship for Outstanding Undergraduate Students at Fudan University
 
 # Academic Service
