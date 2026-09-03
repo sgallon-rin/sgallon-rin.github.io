@@ -7,7 +7,7 @@ type: about
 
 欢迎！&emsp; [[English](./) | [日本語](./ja)]
 
-我是沈嘉伦，[东京科学大学](https://www.isct.ac.jp/en)（原・[东京工业大学](https://www.titech.ac.jp/english)）[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)在读博士。
+我是沈嘉伦，[东京科学大学](https://www.isct.ac.jp/en)（原・[东京工业大学](https://www.titech.ac.jp/english)）[奥村・船越研究室](https://www.lr.first.iir.isct.ac.jp/en/)在读博士。
 
 研究方向：多模态AI，AI Agents，AI for Science，大模型，自然语言处理
 
@@ -16,11 +16,11 @@ type: about
 
 - 2023.09 - 至今 &emsp; [东京科学大学](https://www.isct.ac.jp/en)（原・[东京工业大学](https://www.titech.ac.jp/english)）&nbsp; [工学院 情报通信系](https://educ.titech.ac.jp/ict/eng/) &nbsp; 博士在读
   专业：信息与通信工程
-  指导教师：[奥村学](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) （[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)）
+  指导教师：[奥村学](https://www.lr.first.iir.isct.ac.jp/en/members/okumuramanabu/) （[奥村・船越研究室](https://www.lr.first.iir.isct.ac.jp/en/)）
 
 - 2021.09 - 2023.09 &emsp; [东京工业大学](https://www.titech.ac.jp/english) &nbsp; [工学院 情报通信系](https://educ.titech.ac.jp/ict/eng/) &nbsp; 硕士（工学）
   专业：信息与通信工程
-  指导教师：[奥村学](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) （[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)）
+  指导教师：[奥村学](https://www.lr.first.iir.isct.ac.jp/en/members/okumuramanabu/) （[奥村・船越研究室](https://www.lr.first.iir.isct.ac.jp/en/)）
 
 - 2016.09 - 2021.06 &emsp; [复旦大学](https://www.fudan.edu.cn) &nbsp; [大数据学院](https://sds.fudan.edu.cn) &nbsp; 学士（理学）
   专业：数据科学与大数据技术
@@ -72,4 +72,4 @@ type: about
 
 # 学术服务
 
-- 国际会议审稿人：AAAI 2026
+- 国际会议审稿人：AAAI 2026, 2027

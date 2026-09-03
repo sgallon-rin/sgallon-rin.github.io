@@ -7,7 +7,7 @@ type: about
 
 ようこそ！ &emsp; [[English](./) | [简体中文](./zh-CN)]
 
-私は沈 嘉倫（ﾁﾝ ｶﾛﾝ）と申します。[東京科学大学](https://www.isct.ac.jp/ja)（旧・[東京工業大学](https://www.titech.ac.jp)）大学院[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)所属博士学生です。
+私は沈 嘉倫（ﾁﾝ ｶﾛﾝ）と申します。[東京科学大学](https://www.isct.ac.jp/ja)（旧・[東京工業大学](https://www.titech.ac.jp)）大学院[奥村・船越研究室](https://www.lr.first.iir.isct.ac.jp/)所属博士学生です。
 
 研究テーマ：マルチモーダルAI、AI Agents、AI for Science、大規模言語モデル、自然言語処理
 
@@ -16,11 +16,11 @@ type: about
 
 - 2023.09 - 現在 &emsp; [東京科学大学](https://www.isct.ac.jp/ja)（旧・[東京工業大学](https://www.titech.ac.jp)）大学院 &nbsp; [工学院 情報通信系](https://educ.titech.ac.jp/ict/) &nbsp; 情報通信コース &nbsp; 博士後期課程
   専攻：情報通信工学
-  指導教員：[奥村 学](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) （[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)）
+  指導教員：[奥村 学](https://www.lr.first.iir.isct.ac.jp/members/okumuramanabu/) （[奥村・船越研究室](https://www.lr.first.iir.isct.ac.jp/)）
 
 - 2021.09 - 2023.09 &emsp; [東京工業大学](https://www.titech.ac.jp)大学院 &nbsp; [工学院 情報通信系](https://educ.titech.ac.jp/ict/) &nbsp; 情報通信コース &nbsp; 博士前期課程 修了
   専攻：情報通信工学
-  指導教員：[奥村 学](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) （[奥村・船越研究室](https://lr-www.pi.titech.ac.jp/wp/)）
+  指導教員：[奥村 学](https://www.lr.first.iir.isct.ac.jp/members/okumuramanabu/) （[奥村・船越研究室](https://www.lr.first.iir.isct.ac.jp/)）
 
 - 2016.09 - 2021.06 &emsp; [復旦大学](https://www.fudan.edu.cn/en/) &nbsp; [ビッグデータ学院](https://sds.fudan.edu.cn) &nbsp; 卒業
   専攻：データサイエンス・ビッグデータ技術
@@ -72,4 +72,4 @@ type: about
 
 # 学術サービス
 
-- 国際学会査読：AAAI 2026
+- 国際学会査読：AAAI 2026, 2027

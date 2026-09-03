@@ -7,7 +7,7 @@ type: about
 
 Welcome! &emsp; [[简体中文](./zh-CN) | [日本語](./ja)]
 
-I am Jialun Shen (沈嘉伦), a Ph.D. student at [Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/), [Institute of Science Tokyo](https://www.isct.ac.jp/en) (formerly [Tokyo Institute of Technology](https://www.titech.ac.jp/english)).
+I am Jialun Shen (沈嘉伦), a Ph.D. student at [Okumura-Funakoshi Lab](https://www.lr.first.iir.isct.ac.jp/en/), [Institute of Science Tokyo](https://www.isct.ac.jp/en) (formerly [Tokyo Institute of Technology](https://www.titech.ac.jp/english)).
 
 Research Interests: Multimodal AI, AI Agents, AI for Science,　Large Language Models, Natural Language Processing
 
@@ -16,11 +16,11 @@ Research Interests: Multimodal AI, AI Agents, AI for Science,　Large Language M
 
 - 2023.09 - Present &emsp; Ph.D. Student in Information and Communications Engineering
   [Dept. of Information and Communications Engineering, School of Engineering](https://educ.titech.ac.jp/ict/eng/), [Institute of Science Tokyo](https://www.isct.ac.jp/en) (formerly [Tokyo Institute of Technology](https://www.titech.ac.jp/english))
-  Supervisor: Prof. [Manabu Okumura](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) ([Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/))
+  Supervisor: Prof. [Manabu Okumura](https://www.lr.first.iir.isct.ac.jp/en/members/okumuramanabu/) ([Okumura-Funakoshi Lab](https://www.lr.first.iir.isct.ac.jp/en/))
 
 - 2021.09 - 2023.09 &emsp; M.Eng. in Information and Communications Engineering
   [Dept. of Information and Communications Engineering, School of Engineering](https://educ.titech.ac.jp/ict/eng/), [Tokyo Institute of Technology](https://www.titech.ac.jp/english)
-  Supervisor: Prof. [Manabu Okumura](http://www.lr.pi.titech.ac.jp/~oku/index-e.html) ([Okumura-Funakoshi Lab](https://lr-www.pi.titech.ac.jp/wp/))
+  Supervisor: Prof. [Manabu Okumura](https://www.lr.first.iir.isct.ac.jp/en/members/okumuramanabu/) ([Okumura-Funakoshi Lab](https://www.lr.first.iir.isct.ac.jp/en/))
 
 - 2016.09 - 2021.06 &emsp; B.Sc. in Data Science and Big Data Technology
   [School of Data Science](https://sds.fudan.edu.cn), [Fudan University](https://www.fudan.edu.cn/en/)
@@ -72,4 +72,4 @@ Research Interests: Multimodal AI, AI Agents, AI for Science,　Large Language M
 
 # Academic Service
 
-- Conference Reviewer: AAAI 2026
+- Conference Reviewer: AAAI 2026, 2027
